@@ -1,2 +1,1 @@
-# javascript-code
-javascript code
+ 结合《JavaScript权威指南》，在阅读的过程中，将里面的例子力求敲一边

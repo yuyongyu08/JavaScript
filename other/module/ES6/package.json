@@ -1,0 +1,16 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "js training",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx babel src --out-dir dist --presets=env",
+    "start": "node dist/import.js "
+  },
+  "author": "yuyy",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
