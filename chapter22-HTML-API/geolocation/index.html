@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test geolocation</title>
+</head>
+<body>
+<h2 id="myPosition"></h2>
+<div id="map"></div>
+<button onclick="getLocationInfo()">获取地理信息</button>
+<button onclick="getLocationMap()">获取地图</button>
+<script>
+    function getLocationInfo() {
+        var targetElement = document.getElementById('myPosition');
+
+        if(targetElement) whereami(targetElement);
+    }
+
+    function whereami(element) {
+        var options = {
+            enableHighAccuracy: false, //是否获取高精度位置信息
+            maximumAge: 30000, //强制更新信息时间间隔
+            timeout: 15 * 1000 //等待响应时间
+        };
+
+        function success(position) {
+            var msg =  new Date(position.timestamp).toLocaleString() + '时，你在海拔' + position.coords.accuracy + '米处，'
+                + '经度：' + position.coords.latitude
+                + '，纬度：' + position.coords.longitude;
+
+            if(position.coords.speed){
+                msg += '。当前速度：' + position.coords.speed + ' m/s。'
+                    +'前进方向：' + position.coords.heading
+            }
+
+            element.innerHTML = msg;
+        }
+
+        function error(error) {
+            element.innerHTML = "Geolocation error " + error.code + ': ' + error.message;
+        }
+
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(success, error, options)
+        }else {
+            element.innerHTML = "Geolocation not supported in this browser"
+        }
+    }
+
+
+    function getLocationMap() {
+        getLocationInfo();
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var img = document.createElement('img');
+            img.src = getGoogleMapURL(position);
+            document.getElementById('map').appendChild(img);
+        });
+    }
+
+    function getGoogleMapURL(position) {
+        var url = 'https://maps.googleapis.com/maps/api/staticmap?center='+position.coords.latitude+','+position.coords.altitude+'&zoom=16&size=640x400&path=weight:3%7Ccolor:blue%7Cenc:{coaHnetiVjM??_SkM??~R&key=AIzaSyDzkSfE3pPagkZ-6D9dYC2E8kDoJpJQyiA';
+
+        return url;
+    }
+</script>
+</body>
+</html>
