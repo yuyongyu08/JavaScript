@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>我只是想看下同源下的sessionStorage（更多工具 》开发者工具 》Application 》 Local Storage）</h2>
+<button onclick="getSessionStorageKeys(event)">遍历所有key</button>
+<script>
+    function getSessionStorageKeys(e) {
+        for (let i = 0; i< sessionStorage.length; i++){
+            insertNodeBefore(e.target, sessionStorage.key(i) + ' ');
+        }
+    }
+
+    function insertNodeBefore(refNode, msg) {
+        var span = document.createElement('span');
+        span.innerText = msg;
+        document.body.insertBefore(span, refNode);
+    }
+
+</script>
+</body>
+</html>

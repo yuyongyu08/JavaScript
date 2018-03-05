@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>session storage</title>
+</head>
+<body>
+
+<button onclick="addSessionStorage(event, {key: 'name', value: 'yuyy'})">增加（原始方式）</button>
+<br/>
+
+<button onclick="addSessionStorageByAPI(event, {key: 'age', value: 20})">增加（api方式）</button>
+<br/>
+
+<button onclick="getSessionStorageLength(event)">获取SessionStorage长度</button>
+<br/>
+
+<button onclick="getSessionStorageKeys(event)">遍历所有key</button>
+<br/>
+
+
+<button onclick="clearSessionStorage(event)">清空</button>
+<br/>
+
+
+<h2>
+    localStorage特点<a href="/share" target="_blank">点此测试</a>
+</h2>
+<ol>
+    <li>有效期：会话级别，窗口或标签页关闭就消失</li>
+    <li>作用域：同源同窗口，不同窗口即便是同源也不可共享</li>
+</ol>
+
+<script>
+    /*
+    * @param event
+    * @param item
+    * */
+    function addSessionStorage(e, item){
+        sessionStorage[item.key] = item.value;
+        insertNodeBefore(e.target, item.key + ':');
+        insertNodeBefore(e.target, item.value);
+    }
+
+    function addSessionStorageByAPI(e, item) {
+        sessionStorage.setItem(item.key, item.value);
+        insertNodeBefore(e.target, item.key + ':');
+        insertNodeBefore(e.target, item.value);
+    }
+
+    function getSessionStorageLength(e) {
+        insertNodeBefore(e.target, sessionStorage.length);
+    }
+
+    function getSessionStorageKeys(e) {
+        for (let i = 0; i< sessionStorage.length; i++){
+            insertNodeBefore(e.target, sessionStorage.key(i) + ' ');
+        }
+    }
+
+
+    function clearSessionStorage(e) {
+        sessionStorage.clear();
+        insertNodeBefore(e.target, 'SessionStorage长度:');
+        insertNodeBefore(e.target, sessionStorage.length);
+    }
+
+
+
+    function insertNodeBefore(refNode, msg) {
+        var span = document.createElement('span');
+        span.innerText = msg;
+        document.body.insertBefore(span, refNode);
+    }
+
+</script>
+</body>
+</html>

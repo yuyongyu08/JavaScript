@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>local storage</title>
+</head>
+<body>
+
+<button onclick="addLocalStorage(event, {key: 'name', value: 'yuyy'})">增加（原始方式）</button>
+<br/>
+
+<button onclick="addLocalStorageByAPI(event, {key: 'age', value: 20})">增加（api方式）</button>
+<br/>
+
+<button onclick="getLocalStorageLength(event)">获取localStorage长度</button>
+<br/>
+
+<button onclick="getLocalStorageKeys(event)">遍历所有key</button>
+<br/>
+
+
+<button onclick="clearLocalStorage(event)">清空</button>
+<br/>
+
+
+<h2>
+    localStorage特点<a href="/share" target="_blank">点此测试</a>
+</h2>
+<ol>
+    <li>有效期：永久有效，只要用户不可以删除，永不过期</li>
+    <li>作用域：同源共享</li>
+</ol>
+
+<script>
+    /*
+    * @param event
+    * @param item
+    * */
+    function addLocalStorage(e, item){
+        localStorage[item.key] = item.value;
+        insertNodeBefore(e.target, item.key + ':');
+        insertNodeBefore(e.target, item.value);
+    }
+
+    function addLocalStorageByAPI(e, item) {
+        localStorage.setItem(item.key, item.value);
+        insertNodeBefore(e.target, item.key + ':');
+        insertNodeBefore(e.target, item.value);
+    }
+
+    function getLocalStorageLength(e) {
+        insertNodeBefore(e.target, localStorage.length);
+    }
+
+    function getLocalStorageKeys(e) {
+        for (let i = 0; i< localStorage.length; i++){
+            insertNodeBefore(e.target, localStorage.key(i) + ' ');
+        }
+    }
+
+
+    function clearLocalStorage(e) {
+        localStorage.clear();
+        insertNodeBefore(e.target, 'localStorage长度:');
+        insertNodeBefore(e.target, localStorage.length);
+    }
+
+
+
+    function insertNodeBefore(refNode, msg) {
+        var span = document.createElement('span');
+        span.innerText = msg;
+        document.body.insertBefore(span, refNode);
+    }
+
+</script>
+
+</body>
+</html>
