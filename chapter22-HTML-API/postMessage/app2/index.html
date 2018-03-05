@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test postMessage</title>
+</head>
+<body>
+<h3>子窗口</h3>
+<button onclick="postMsg()">发送跨窗口消息</button>
+
+<h2>子窗口接收的消息：</h2>
+<div id="msg"></div>
+<script>
+    function postMsg() {
+        // window.parent.postMessage({msg: '你好，我是子窗口！'}, '*');
+        window.postMessage({msg: '你好，我是子窗口！'}, '*');
+    }
+
+    window.addEventListener('message', function (ev) {
+        console.log('子窗口接收的消息：', ev);
+        document.getElementById('msg').innerText = ev.data.msg;
+    })
+</script>
+</body>
+</html>

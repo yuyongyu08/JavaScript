@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test postMessage</title>
+</head>
+<body>
+<h2>父窗口</h2>
+<button onclick="subWindowPostMsg()">跨窗口发送消息</button>
+<br/>
+<br/>
+<br/>
+
+<iframe id="myframe" name="subWindow" src="http://localhost:9000/" height="250px"></iframe>
+
+<h2>父窗口接收的消息:</h2>
+<div id="msg"></div>
+
+<script>
+
+    function subWindowPostMsg() {
+        window.postMessage({msg: '你好，我是父窗口！'}, '*')
+    }
+
+    var iframe = document.getElementById('myframe');
+    iframe.onload = function (ev) {
+        iframe.contentWindow.postMessage({msg: '父窗口发给子窗口？'}, '*');
+    };
+
+    window.addEventListener('message', function (event) {
+        console.log('父窗口接收的消息：',event);
+        document.getElementById('msg').innerText = event.data.msg;
+    })
+
+    /**
+     * 所谓的跨窗口消息传递，对于父窗口向子窗口传递消息，不过是在父窗口通过脚本方式控制子窗口发送消息，然后子窗口再接收自己刚才发送的消息
+     * 同样的，子窗口向父窗口传递消息，在子窗口通过脚本控制父窗口发送消息，然后父窗口再接收自己刚才发送的消息。
+     * */
+
+</script>
+</body>
+</html>
