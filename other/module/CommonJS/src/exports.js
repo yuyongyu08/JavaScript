@@ -5,8 +5,26 @@ const firstName = 'yongyu';
 const lastName = 'Yu';
 const job = 'programmer';
 function greet (name) {
+    console.log('greet.caller:', greet.caller);//输出此文
     console.log('Hi, ' + name + '! You are Testing CommonJS')
 };
+
+//每一个js文件都是一个模块
+greet('yuyy');
+
+//js文件会被如下函数
+// function (exports, require, module, __filename, __dirname) {
+    /*
+     * js文件内容
+     * */
+// }
+console.log('exports:', exports);
+console.log('require:', require);
+console.log('module:', module);
+console.log('__filename:', __filename);
+console.log('__dirname:', __dirname);
+
+
 
 //module.exports属性，表示当前模块对外输出的接口，其他文件加载该模块，实际上就是读取module.exports变量。
 // module.exports.firstName = firstName;
@@ -14,16 +32,21 @@ function greet (name) {
 // module.exports.job = job;
 // module.exports.greet = greet;
 
-module.exports = {
-    firstName: firstName,
-    lastName: lastName,
-    job: job,
-    greet: greet
-};
-
+//exports和module.exports指向同一个对象
+console.log(exports === module.exports);
 
 //也可以直接将需要导出的变量直接放到exports中，不推荐！！！
 // exports.firstName = firstName;
 // exports.lastName = lastName;
 // exports.job = job;
 // exports.greet = greet;
+// console.log(exports === module.exports);
+
+
+//推荐做法！！！
+module.exports = {
+    firstName: firstName,
+    lastName: lastName,
+    job: job,
+    greet: greet
+};
