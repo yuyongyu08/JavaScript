@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域document.domain</title>
+</head>
+<body>
+<h1>
+    JSONP注意事项
+    <ul>
+        <li>
+            前端注意与后端沟通约定jsonp的值，通常默认都是用callback。
+        </li>
+        <li>
+            后端根据jsonp参数名获取到参数后要与本来要返回的json数据按“callback(json)”的方式构造。
+        </li>
+    </ul>
+</h1>
+<script>
+    function addScriptTag(src) {
+        var script = document.createElement('script');
+        script.setAttribute("type","text/javascript");
+        script.src = src;
+        document.body.appendChild(script);
+    }
+
+    window.onload = function () {
+        addScriptTag('http://fe.sso-dev-1.com:9000/ip?cb=handler');
+    };
+
+    function handler(data) {
+        console.log('Your public IP address is: ' + data.ip);
+    }
+</script>
+</body>
+</html>

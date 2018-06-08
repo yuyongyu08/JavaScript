@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域document.domain</title>
+</head>
+<body>
+<h1>
+    Hllo, app1
+</h1>
+<script>
+    document.domain = 'example.com';
+    document.cookie = 'source=app1';
+    console.log(document.cookie);
+</script>
+</body>
+</html>

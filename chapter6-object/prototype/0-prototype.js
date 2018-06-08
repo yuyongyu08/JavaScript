@@ -18,3 +18,11 @@ console.log(f.constructor); //[Function: Function]  对象是通过构造函数�
 * 万物皆对象，每个对象都有原型（原型指针）
 *
 * */
+
+
+/*
+* 为什么对象没有原型对象（prototype），而方法有？
+*
+* 方法是用来创建对象的，如果想实现原型继承，方法中必须要有原型对象（prototype）
+*
+* */
