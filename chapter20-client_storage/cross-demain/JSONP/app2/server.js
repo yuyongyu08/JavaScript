@@ -18,6 +18,9 @@ app.get('/ip', function (req, res) {
     else{
         res.json(responseData);
     }
+
+    //express已经封装了JSONP的返回，如下
+    // res.jsonp({ ip: '192.168.25.17'});
 });
 
 

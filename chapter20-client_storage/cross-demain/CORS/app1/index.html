@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CORS</title>
+</head>
+<body>
+<h1>
+    CORS注意事项
+</h1>
+<h3>
+    客户端设置
+    <ul>
+        <li>
+            withCredentials：跨域创建cookie；跨域时携带cookie
+        </li>
+    </ul>
+</h3>
+<h3>
+    服务器
+    <ul>
+        <li>
+            前端注意与后端沟通约定jsonp的值，通常默认都是用callback。
+        </li>
+        <li>
+            后端根据jsonp参数名获取到参数后要与本来要返回的json数据按“callback(json)”的方式构造。
+        </li>
+    </ul>
+</h3>
+
+<button onclick="requestAgain()">在次发请求</button>
+<script>
+    function doRequest(url, method) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url, true);
+        xhr.setRequestHeader('X-Custom-Header', 'value');
+        xhr.withCredentials = true;
+        xhr.send();
+    }
+
+    window.onload = function () {
+        doRequest('http://fe.sso-dev-1.com:9000/cors', 'PUT')
+    };
+
+    function requestAgain() {
+        doRequest('http://fe.sso-dev-1.com:9000/cors/2', 'PUT');
+    }
+
+</script>
+</body>
+</html>
