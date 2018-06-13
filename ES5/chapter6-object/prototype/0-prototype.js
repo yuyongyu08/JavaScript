@@ -26,3 +26,19 @@ console.log(f.constructor); //[Function: Function]  对象是通过构造函数�
 * 方法是用来创建对象的，如果想实现原型继承，方法中必须要有原型对象（prototype）
 *
 * */
+
+
+/*
+*
+* 本地对象 都是函数，它们的原型都是Function的原型对象
+*
+* */
+
+console.log(Object.getPrototypeOf(Date) === Function.prototype);
+console.log(Object.getPrototypeOf(String) === Function.prototype);
+console.log(Object.getPrototypeOf(Number) === Function.prototype);
+console.log(Object.getPrototypeOf(Boolean) === Function.prototype);
+console.log(Object.getPrototypeOf(Function) === Function.prototype);
+console.log(Object.getPrototypeOf(Object) === Function.prototype);
+
+console.log(Object.prototype.constructor === Object);
