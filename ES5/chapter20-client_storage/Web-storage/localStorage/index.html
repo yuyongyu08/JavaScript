@@ -6,11 +6,31 @@
 </head>
 <body>
 
+存储方式1：
 <button onclick="addLocalStorage(event, {key: 'name', value: 'yuyy'})">增加（原始方式）</button>
 <br/>
 
+存储方式2：
 <button onclick="addLocalStorageByAPI(event, {key: 'age', value: 20})">增加（api方式）</button>
 <br/>
+
+
+<button onclick="addLocalStorageByAPI(event, {key: 'child', value: {name:'ww'}})">存储对象</button>
+<br/>
+
+
+<button onclick="getLocalStorage(event, 'child')">获取对象</button>
+<br/>
+
+
+<button onclick="addLocalStorageByAPI(event, {key: 'fruits', value: ['apple', 'orange', 'banana']})">存储数组</button>
+<br/>
+
+
+<button onclick="getLocalStorage(event, 'fruits')">获取数组</button>
+<br/>
+
+
 
 <button onclick="getLocalStorageLength(event)">获取localStorage长度</button>
 <br/>
@@ -28,7 +48,8 @@
 </h2>
 <ol>
     <li>有效期：永久有效，只要用户不可以删除，永不过期</li>
-    <li>作用域：同源共享</li>
+    <li>作用域：同源共享，域名必须完全相同，子域名不同不可共享</li>
+    <li>存储值：如果存储的是引用类型，取到值将是引用类型的toString()的返回值</li>
 </ol>
 
 <script>
@@ -46,6 +67,12 @@
         localStorage.setItem(item.key, item.value);
         insertNodeBefore(e.target, item.key + ':');
         insertNodeBefore(e.target, item.value);
+    }
+
+    function getLocalStorage(e, key) {
+        var value = localStorage.getItem(key);
+        console.log(value);
+        insertNodeBefore(e.target, key + ':' + value);
     }
 
     function getLocalStorageLength(e) {

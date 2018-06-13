@@ -6,11 +6,25 @@
 </head>
 <body>
 
+
 <button onclick="addSessionStorage(event, {key: 'name', value: 'yuyy'})">增加（原始方式）</button>
 <br/>
 
 <button onclick="addSessionStorageByAPI(event, {key: 'age', value: 20})">增加（api方式）</button>
 <br/>
+
+
+<button onclick="addSessionStorageByAPI(event, {key: 'child', value: {name: 'ww'}})">新增对象类型</button>
+<br/>
+<button onclick="getSessionStorage(event, 'child')">获取对象</button>
+<br/>
+
+
+<button onclick="addSessionStorageByAPI(event, {key: 'fruits', value: ['apple', 'orange', 'banana']})">存储数组</button>
+<br/>
+<button onclick="getSessionStorage(event, 'fruits')">获取数组</button>
+<br/>
+
 
 <button onclick="getSessionStorageLength(event)">获取SessionStorage长度</button>
 <br/>
@@ -24,11 +38,13 @@
 
 
 <h2>
-    localStorage特点<a href="/share" target="_blank">点此测试</a>
+    sessionStorage特点<a href="/share" target="_blank">点此测试</a>
 </h2>
 <ol>
     <li>有效期：会话级别，窗口或标签页关闭就消失</li>
     <li>作用域：同源同窗口，不同窗口即便是同源也不可共享</li>
+    <li>存储值：如果存储的是引用类型，取到值将是引用类型的toString()的返回值</li>
+
 </ol>
 
 <script>
@@ -46,6 +62,12 @@
         sessionStorage.setItem(item.key, item.value);
         insertNodeBefore(e.target, item.key + ':');
         insertNodeBefore(e.target, item.value);
+    }
+
+    function getSessionStorage(e, key) {
+        var value = sessionStorage.getItem(key);
+        console.log(value);
+        insertNodeBefore(e.target, key + ':' + value);
     }
 
     function getSessionStorageLength(e) {
