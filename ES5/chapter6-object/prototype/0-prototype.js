@@ -30,15 +30,15 @@ console.log(f.constructor); //[Function: Function]  对象是通过构造函数�
 
 /*
 *
-* 本地对象 都是函数，它们的原型都是Function的原型对象
+* 本地对象 都是构造函数，它们的原型都是Function的原型对象
 *
 * */
 
-console.log(Object.getPrototypeOf(Date) === Function.prototype);
-console.log(Object.getPrototypeOf(String) === Function.prototype);
-console.log(Object.getPrototypeOf(Number) === Function.prototype);
-console.log(Object.getPrototypeOf(Boolean) === Function.prototype);
-console.log(Object.getPrototypeOf(Function) === Function.prototype);
-console.log(Object.getPrototypeOf(Object) === Function.prototype);
+console.log(Object.getPrototypeOf(Date) === Function.prototype); //true
+console.log(Object.getPrototypeOf(String) === Function.prototype); //true
+console.log(Object.getPrototypeOf(Number) === Function.prototype); //true
+console.log(Object.getPrototypeOf(Boolean) === Function.prototype); //true
+console.log(Object.getPrototypeOf(Function) === Function.prototype); //true
+console.log(Object.getPrototypeOf(Object) === Function.prototype); //true
 
-console.log(Object.prototype.constructor === Object);
+console.log(Object.prototype.constructor === Object); //true
