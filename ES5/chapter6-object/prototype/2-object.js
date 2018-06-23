@@ -17,8 +17,8 @@ let foo = new Foo();
 *     constructor === Foo （构造函数）
 *     __proto__ === Foo.prototype （父类的原型对象）
 * */
-console.log(foo.constructor === Foo);
-console.log(foo.__proto__ === Foo.prototype);
+console.log(foo.constructor === Foo); //true
+console.log(foo.__proto__ === Foo.prototype); //true
 
 
 /*
@@ -26,9 +26,9 @@ console.log(foo.__proto__ === Foo.prototype);
 *     constructor === Foo （构造函数）
 *     __proto__ === Function.prototype （父类的原型对象）
 * */
-console.log(Foo.prototype.constructor === Foo);
-console.log(Foo.prototype.__proto__ === Object.prototype);
-console.log(Foo.__proto__ === Function.prototype);
+console.log(Foo.prototype.constructor === Foo); //true
+console.log(Foo.prototype.__proto__ === Object.prototype); //true
+console.log(Foo.__proto__ === Function.prototype); //true
 
 
 /*
@@ -36,9 +36,9 @@ console.log(Foo.__proto__ === Function.prototype);
 *     constructor === Function （构造函数，特别注意！！！）
 *     __proto__ === Object.prototype （父类的原型对象）
 * */
-console.log(Function.prototype.constructor === Function);
-console.log(Function.prototype.__proto__ === Object.prototype);
-console.log(Function.__proto__ === Function.prototype);
+console.log(Function.prototype.constructor === Function); //true
+console.log(Function.prototype.__proto__ === Object.prototype); //true
+console.log(Function.__proto__ === Function.prototype); //true
 
 /*
 * Object.prototype:
@@ -46,9 +46,9 @@ console.log(Function.__proto__ === Function.prototype);
 *     __proto__ === null （父类的原型对象）
 * */
 
-console.log(Object.prototype.constructor === Object);
-console.log(Object.prototype.__proto__ === null);
-console.log(Object.__proto__ === Function.prototype);
+console.log(Object.prototype.constructor === Object); //true
+console.log(Object.prototype.__proto__ === null); //true
+console.log(Object.__proto__ === Function.prototype); //true
 
 
 /*
