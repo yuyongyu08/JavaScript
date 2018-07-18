@@ -1,20 +1,9 @@
-function Student(name){
-    var name = name;
-    function privateFunc(){
-        console.log("This is a private fucntion");
-    }
-    this.showName = function(){
-        privateFunc();
-        console.log(name);
-    }
+let a = {};
 
-}
-Student.prototype.protoFunction = function(){
-    //console.log(name);
-    this.showName();
-}
+console.log(a.hasOwnProperty('__proto__'));
+console.log(a.__proto__);
 
-var stu = new Student("Jim")
-stu.showName();
-stu.protoFunction();
 
+console.log(a.__proto__.constructor);
+console.log(a.constructor);
+console.log(a.prototype);

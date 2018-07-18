@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>跨域document.domain</title>
+    <title>跨域：JSONP</title>
 </head>
 <body>
 <h1>
@@ -13,6 +13,9 @@
         </li>
         <li>
             后端根据jsonp参数名获取到参数后要与本来要返回的json数据按“callback(json)”的方式构造。
+        </li>
+        <li>
+            后端返回的其实是一段JavaScript代码：一个已经传了参数（json）的方法（callback）。这段代码返回到浏览器后会立即执行。
         </li>
     </ul>
 </h1>

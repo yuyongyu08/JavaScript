@@ -22,6 +22,9 @@ Student.prototype.saySchool = function () {
 
 
 let s1 = new Student('清华');
+console.log(s1);
+console.log(s1.__proto__);
+
 console.log(s1.constructor);
 s1.saySchool();
 s1.saySkinColor();

@@ -5,7 +5,7 @@ function Person() {
 Person.prototype.name = 'Mike';
 Person.prototype.age = '20';
 Person.prototype.job = 'worker';
-Person.prototype.color = ['red'];
+Person.prototype.colors = ['red'];
 Person.prototype.sayName = function () {
     console.log(this.name);
 };
@@ -66,9 +66,9 @@ p2.sayName(); // Mike
 *
 * */
 
-console.log(p1.color); // [ 'red' ]
+console.log(p1.colors); // [ 'red' ]
 
-p2.color.push('green');
+p2.colors.push('green');
 
-console.log(p1.color); // [ 'red', 'green' ]
+console.log(p1.colors); // [ 'red', 'green' ]
 
