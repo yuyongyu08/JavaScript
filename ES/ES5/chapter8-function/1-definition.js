@@ -1,9 +1,10 @@
-//方式一：函数声明
+
+//方式一：函数声明(会变量提升)
 function sayHello() {
     console.log('hello');
 }
 
-//方式二：函数表达
+//方式二：函数表达式
 var sayHello1 = function () {
     console.log('hello');
 };

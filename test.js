@@ -1,9 +1,1 @@
-let a = {};
-
-console.log(a.hasOwnProperty('__proto__'));
-console.log(a.__proto__);
-
-
-console.log(a.__proto__.constructor);
-console.log(a.constructor);
-console.log(a.prototype);
+console.log(Object.prototype.toString.call([]) === '[object Array]');

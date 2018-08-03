@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .anxuan-enterprise{
+            background-color: rgba(58,167,49, .1);
+            color: #3AA731;
+            padding: 1px;
+        }
+
+        div{
+            height: 100px;
+            width: 200px;
+            border: 1px solid red;
+            position: relative;
+            border-bottom: 0;
+        }
+
+        div::after{
+            display: inline-block;
+            content: '';
+            width: 200px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -54px;
+            border-top: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<span class="anxuan-enterprise">安选企业</span>
+
+<div></div>
+</body>
+</html>
