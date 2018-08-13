@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地址（location）</title>
+</head>
+<body>
+<div id="example"></div>
+<script>
+    // location.assign('');
+    var txt = "<p>完整地址(href): " + location.href + "</p>";
+    txt += "<p>协议(protocol): " + location.protocol + "</p>";
+    txt+= "<p>域名(host): " + location.host + "</p>";
+    txt+= "<p>主机名(hostname): " + location.hostname + "</p>";
+    txt+= "<p>端口(port): " + location.port + "</p>";
+    txt+= "<p>路径(pathname): " + location.pathname + "</p>";
+    txt+= "<p>参数(search): " + location.search + "</p>";
+    txt+= "<p>锚点(hash): " + location.hash + "</p>";
+    document.getElementById("example").innerHTML=txt;
+</script>
+</body>
+</html>

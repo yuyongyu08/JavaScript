@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>屏幕（screen）</title>
+</head>
+<body>
+<div id="example"></div>
+<script>
+    var txt = "<p>屏幕总宽度(width): " + screen.width + "</p>";
+    txt+= "<p>屏幕总高度(height): " + screen.height + "</p>";
+    txt+= "<p>屏幕可用宽度(availWidth): " + screen.availWidth + "</p>";
+    txt+= "<p>屏幕可用高度(availHeight): " + screen.availHeight + "</p>";
+    txt+= "<p>屏幕色彩深度(colorDepth): " + screen.colorDepth + "</p>";
+    txt+= "<p>屏幕分辨率(pixelDepth): " + screen.pixelDepth + "</p>";
+    document.getElementById("example").innerHTML=txt;
+</script>
+</body>
+</html>

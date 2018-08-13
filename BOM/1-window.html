@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>窗口（window）</title>
+</head>
+<body>
+<div id="example"></div>
+<script>
+    var txt = "<p>浏览器(navigator): " + window.navigator + "</p>";
+    txt+= "<p>屏幕(screen): " + window.screen + "</p>";
+    txt+= "<p>地址(location): " + window.location + window.location.toString() + "</p>";
+    txt+= "<p>历史(history): " + window.history + "</p>";
+    document.getElementById("example").innerHTML=txt;
+</script>
+</body>
+</html>

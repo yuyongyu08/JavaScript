@@ -13,4 +13,4 @@ console.log(arr1); // [ 1, [ 'a', 'b' ], 2, 3, 4, 5 ]
 
 
 // 改变原数组
-// 参数： start: number, deleteCount: number, ...items: T[]
+// 参数： start, deleteCount, ...insertItems

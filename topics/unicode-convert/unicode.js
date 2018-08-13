@@ -15,11 +15,3 @@ console.log(textToUnicode(text));
 console.log(unicodeToText(textToUnicode(text)));
 
 
-
-function unicodeToText1(unicode) {
-    console.log(unicode.split(/\\u/g));
-    console.log(...unicode.split(/\\u/g));
-    return String.fromCharCode(...unicode.split(/\\u/g))
-}
-
-console.log(unicodeToText1(textToUnicode(text)));

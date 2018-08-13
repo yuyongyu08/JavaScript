@@ -1,3 +1,5 @@
+
+
 function Person(name) {
     this.name = name;
 }
@@ -17,8 +19,8 @@ console.log(Person.prototype.__proto__ === Object.prototype);// true
 
 //第三步验证
 console.log(Function.__proto__ === Function.prototype); // true
-console.log(Function.prototype.constructor === Function);
-console.log(Function.prototype.__proto__ === Object.prototype);
+console.log(Function.prototype.constructor === Function);// true
+console.log(Function.prototype.__proto__ === Object.prototype);// true
 
 
 //第四步验证

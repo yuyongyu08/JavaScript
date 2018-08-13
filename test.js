@@ -1,1 +1,1 @@
-console.log(Object.prototype.toString.call([]) === '[object Array]');
+console.log(JSON.parse('"' + '\u6021\u7136\u5bb6\u56ed(\u5357\u533a)' + '"'));
