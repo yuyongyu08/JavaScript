@@ -10,6 +10,8 @@ console.log(arr.includes(3)); // true
 
 console.log(arr.includes([2,3])); //false
 
+console.log(arr.includes([2])); //false
+
 
 let persons = [
     {
@@ -38,4 +40,8 @@ let personList = [
     }
 ];
 
-console.log(persons.includes(person)); // false 为啥？？？
+console.log(personList); // [ { id: '1', name: 'yuyy' }, { id: '2', name: 'yyy' } ]
+
+console.log(person === personList[0]); //true
+
+console.log(personList.includes(person)); // true
