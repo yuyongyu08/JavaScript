@@ -10,3 +10,6 @@ console.log(string); //hello world
 console.log(string.slice(6, string.length)); //world
 console.log(string.substring(6, string.length)); //world
 
+console.log(string.slice(3, 1)); //
+console.log(string.substring(3, 1)); //el
+

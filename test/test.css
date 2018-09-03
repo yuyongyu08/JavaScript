@@ -1552,13 +1552,14 @@ a {
     display: none;
     position: absolute;
     left: 0;
-    top: -260px;
+    top: -280px;
     width: 420px;
+    height: 240px;
     border-radius: 2px;
     background: #FFF;
     border: 1px solid #EEE;
     box-shadow: 0 2px 10px #eee;
-    padding: 35px 16px;
+    padding: 12px 16px;
     animation-name: fade-up;
     animation-duration: .2s;
     animation-fill-mode: forwards
