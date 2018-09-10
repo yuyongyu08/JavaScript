@@ -1592,7 +1592,8 @@ a {
 .for-center {
     height: 100%;
     display: inline-block;
-    vertical-align: middle
+    vertical-align: middle;
+    display: none;
 }
 
 .phone-qr-code {
@@ -1600,14 +1601,20 @@ a {
     vertical-align: middle;
     margin-right: 32px;
     width: 170px;
-    height: 170px
+    height: 170px;
+    position: absolute;
+    left: 50px;
+    top: 45px;
 }
 
 .phone-qr-text-container {
     display: inline-block;
     vertical-align: middle;
     color: #000;
-    text-align: left
+    text-align: left;
+    position: absolute;
+    right: 40px;
+    top: 60px;
 }
 
 .phone-qr-text-xl {
