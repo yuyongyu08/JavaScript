@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li:nth-of-type(2){
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<button onclick="deleteNode(1)">删除第1个节点</button>
+<div id="app"></div>
+
+<script>
+    let arr = [];
+
+    for (let i = 0; i < 10000; i++){
+        arr.push(`第${i}个节点`)
+    }
+
+
+    function deleteNode(index) {
+        arr.splice(index, 1);
+
+        renderList(arr);
+    }
+
+    function renderList(array) {
+        let mount = document.getElementById('app');
+        mount.firstChild ? mount.removeChild(mount.firstChild) : '';
+        let ul = document.createElement('ul');
+        array.forEach(function (value, index) {
+            let text = document.createTextNode(value);
+            let li = document.createElement('li');
+            li.appendChild(text);
+            ul.appendChild(li);
+        });
+        document.getElementById('app').appendChild(ul);
+    }
+
+    renderList(arr);
+
+</script>
+</body>
+</html>

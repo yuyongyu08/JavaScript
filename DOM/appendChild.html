@@ -5,17 +5,22 @@
     <title>DOM-插入子节点</title>
 </head>
 <body>
+<h1>第0个标题</h1>
 <div id="app"></div>
 
 <script>
     //写法1：分步调用
     var h1 = document.createElement('h1');
-    var text = document.createTextNode('第1个节点');
-    h1.appendChild(text);
+    var text = document.createTextNode('第1个标题');
+    h1.appendChild(text); //！！！
     document.getElementById('app').appendChild(h1);
 
     //写法2：链式调用
-    document.getElementById('app').appendChild(document.createElement('h1').appendChild(document.createTextNode('第2个节点')));
+    document.getElementById('app').appendChild(document.createElement('h1').appendChild(document.createTextNode('第2个标题')));
+
+
+
+
 </script>
 </body>
 </html>
