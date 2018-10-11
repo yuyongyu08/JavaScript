@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>innerHTML导致iframe重复请求</title>
+    <style>
+        #wangmeng_btm_ad_container{
+            border: 1px solid rgb(224, 225, 226); margin: 2px 3px 5px; width: 97%; overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="wangmeng_btm_ad_container">
+    <iframe src="//statictrack.58.com/58_m_zhike_hmbanner1_testd_180705.html?v=20180705" frameborder="0"></iframe>
+    <iframe src="//statictrack.58.com/58_m_zhike_hmwz1_testd_180510.html?v=20180521" frameborder="0"></iframe>
+    <iframe src="//statictrack.58.com/58_m_zhike_hmwz2_testd_180510.html?v=20180521" frameborder="0"></iframe>
+    <iframe src="//statictrack.58.com/58_m_zhike_hmwz3_testd_180510.html?v=20180521" frameborder="0"></iframe>
+    <img src="https://t1.58cdn.com.cn/bidding/big/n_v25b26337c51ec47559de5273b29a7a4b9.png" style="width: 2.8125rem; height: 2.09375rem;">
+</div>
+
+<script>
+    document.getElementById('wangmeng_btm_ad_container').innerHTML += '<div id="adspan">广告</div>';
+
+    //原因：
+    // document.getElementById('wangmeng_btm_ad_container').innerHTML = document.getElementById('wangmeng_btm_ad_container').innerHTML + '<div id="adspan"><span style="float:right;font-size:12px">广告</span></div>';
+
+    //解决方案：
+    // var div = document.createElement('div');
+    // div.id = 'adspan';
+    // var text = document.createTextNode('广告');
+    // div.appendChild(text);
+
+    // document.getElementById('wangmeng_btm_ad_container').appendChild(div)
+
+    //总结：
+    // 1.请求状态为canceled，表示请求被浏览器取消了，并没有从浏览器发出去，更不可能进到服务器
+    //
+    // 2.iframe在请求没有完成前重复请求会被浏览器canceled
+    //
+    // 3.elemen.innerHTML += HTMLStr 表示将原有的子节点和新的节点拼接后再重新赋值，慎用！！！
+</script>
+</body>
+</html>

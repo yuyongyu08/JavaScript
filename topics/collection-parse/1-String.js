@@ -1,7 +1,8 @@
-//逆转字符串
+
 
 let str = '123';
 
+//逆转字符串
 console.log(str.split(''));
 console.log(str.split('').reverse());
 console.log(str.split('').reverse().join(''));

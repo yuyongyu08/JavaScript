@@ -6,12 +6,13 @@ function test(...item) {
     return arguments;
 }
 
-test('yuyongyu', 'yuyy', 'yyyy');
+let arrLike = test('yuyongyu', 'yuyy', 'yyyy');
 
 /**
  * 1. for...
  */
 
-for (let i){
-
+console.log(arrLike);
+for (let i= 0,length = arrLike.length; i < length; i++){
+    console.log(arrLike[i]);
 }
