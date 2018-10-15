@@ -7,6 +7,11 @@
         #wangmeng_btm_ad_container{
             border: 1px solid rgb(224, 225, 226); margin: 2px 3px 5px; width: 97%; overflow: hidden;
         }
+
+        iframe{
+            display: block;
+            border: 1px solid #222;
+        }
     </style>
 </head>
 <body>
@@ -16,7 +21,10 @@
     <iframe src="//statictrack.58.com/58_m_zhike_hmwz2_testd_180510.html?v=20180521" frameborder="0"></iframe>
     <iframe src="//statictrack.58.com/58_m_zhike_hmwz3_testd_180510.html?v=20180521" frameborder="0"></iframe>
     <img src="https://t1.58cdn.com.cn/bidding/big/n_v25b26337c51ec47559de5273b29a7a4b9.png" style="width: 2.8125rem; height: 2.09375rem;">
+    <script src="www.baidu.com"></script>
 </div>
+
+
 
 <script>
     document.getElementById('wangmeng_btm_ad_container').innerHTML += '<div id="adspan">广告</div>';
@@ -29,15 +37,18 @@
     // div.id = 'adspan';
     // var text = document.createTextNode('广告');
     // div.appendChild(text);
-
+    //
     // document.getElementById('wangmeng_btm_ad_container').appendChild(div)
 
     //总结：
-    // 1.请求状态为canceled，表示请求被浏览器取消了，并没有从浏览器发出去，更不可能进到服务器
+    // 1.chrome开发者工具中的Network > Initiator（启动程序）代表请求的触发处，对于排查请求从何而来非常有用
     //
-    // 2.iframe在请求没有完成前重复请求会被浏览器canceled
+    // 2.请求状态为canceled，表示请求被浏览器取消了，并没有从浏览器发出去，更不可能进到服务器
     //
-    // 3.elemen.innerHTML += HTMLStr 表示将原有的子节点和新的节点拼接后再重新赋值，慎用！！！
+    // 3.iframe在请求没有完成前重复请求会被浏览器canceled
+    //
+    // 4.element.innerHTML += HTMLStr 表示将原有的子节点和新的节点拼接后再重新赋值，慎用！！！
+
 </script>
 </body>
 </html>
