@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>第1个标题</h3>
+<h3>第2个标题</h3>
+<h3>第3个标题</h3>
+
+<script>
+    let allTitles = document.getElementsByTagName('h3');
+    console.log(typeof allTitles);
+
+    for(var i = 0; i < allTitles.length; i++){
+        let msg = '第'+ i +'个标题';
+
+        let text = document.createTextNode(msg);
+        let h3 = document.createElement('h3');
+        h3.appendChild(text);
+
+        document.body.appendChild(h3)
+    }
+
+    /**
+     * 原因："假定实时态"
+     * getElementsByName()
+     * getElementsByTagName()
+     * getElementsByClassName()
+     * 以上方法返回的是HTML集合，HTML集合会和文档始终保持连接，底层文档对象的更新，会立马同步到HTML集合上
+     *
+     */
+
+
+</script>
+</body>
+</html>
