@@ -13,4 +13,4 @@ console.log(...arr); //1 2 3 4 5
 
 
 //2.转object
-console.log(Object.assign({}, arr));
+console.log(Object.assign({}, arr)); //{ '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }

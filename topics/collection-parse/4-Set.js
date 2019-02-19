@@ -1,10 +1,11 @@
 let set = new Set();
 
 set.add('yuyy');
-set.add('yuyongyu');
-set.add('yyy');
+set.add('male');
+set.add('1991');
 
-console.log(set);
+console.log(set); //Set { 'yuyy', 'male', '1991' }
 
 
-console.log(Array.from(set));
+//1.转Array
+console.log(Array.from(set)); //[ 'yuyy', 'male', '1991' ]

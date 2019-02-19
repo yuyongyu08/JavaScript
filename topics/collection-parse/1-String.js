@@ -1,16 +1,13 @@
-
-
-let str = '123';
+let str = 'hello';
 
 //逆转字符串
-console.log(str.split(''));
-console.log(str.split('').reverse());
-console.log(str.split('').reverse().join(''));
+console.log(str.split('').reverse().join('')); //olleh
 
-//字符串转数组：split()
-console.log(str.split(''));
+//1.转数组
 
+// 方法1：split()
+console.log(str.split('')); //[ 'h', 'e', 'l', 'l', 'o' ]
 
-//数组转字符串：join()
-arr = [1,2,3];
-console.log(arr.join('-'));
+// 方法2：Array.from()
+console.log(Array.from(str)); //[ 'h', 'e', 'l', 'l', 'o' ]
+
