@@ -5,6 +5,7 @@ console.log(arr.map(function (value, index, array) {
 })); // [ 2, 10, 4, 6, 8, 10 ]
 
 console.log(arr.map(item => item * 2));// [ 2, 10, 4, 6, 8, 10 ]
+console.log();
 
 
 

@@ -5,3 +5,19 @@ console.log(arr.find(function (value, index, array) {
 })); // 2
 
 console.log(arr.find(item => item >=2)); // 2
+
+
+let person = {
+    id: '1',
+    name: 'yuyy'
+};
+
+let personList = [
+    person,
+    {
+        id: '2',
+        name: 'yyy'
+    }
+];
+
+console.log(personList.find((v) => v.id==1 || v.id==2));
