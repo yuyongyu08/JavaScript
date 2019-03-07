@@ -10,4 +10,3 @@ console.log(str.split('')); //[ 'h', 'e', 'l', 'l', 'o' ]
 
 // 方法2：Array.from()
 console.log(Array.from(str)); //[ 'h', 'e', 'l', 'l', 'o' ]
-

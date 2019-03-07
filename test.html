@@ -6,9 +6,15 @@
     <script type="module" src="data:text/javascript;charset=utf-8,var test_module_scope = true; window.callback_9e00d4(typeof window.test_module_scope === 'undefined')"></script>
 </head>
 <body>
+<div id="a"></div>
+
 <script>
-    var test_module_scope = true;
-    alert(typeof window.test_module_scope === 'undefined')
+    var key = '昆仑公寓" bn=prompt(0) ><svg onload=prompt(0)>';
+
+    key = key.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    console.log(key);
+
+    document.getElementById('a').innerHTML = key
 </script>
 
 </body>

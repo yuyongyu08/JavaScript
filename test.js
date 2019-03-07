@@ -1,24 +1,20 @@
-let debt =  [
-    {
-        text: '叔',
-        value: 1.0
-    },
-    {
-        text: '哥',
-        value: 12.1
-    },
-    {
-        text: '凤姐',
-        value: 3.0
-    },
-    {
-        text: '张起',
-        value: 1.0
-    }
-]
 
+let o = [
+    '<h2 class="jg-title">{{t_title}}<a href="//c.58cdn.com.cn/zt/house/zhanling/index.html" class="jg-hot-wrap">hot</a></h2>',
+    '<ul class="jg-command-house-wrap">'
+].join('');
 
-let total =
-console.log(debt.reduce(function (init, cur) {
-    return  Number(init) + Number(cur.value)
-}, 0));
+console.log(o);
+
+let adTip = '<span class="ad">广告</span>';
+let a = 'sh1'
+
+let o1 = [
+    '<h2 class="jg-title">{{t_title}}',
+    '<a href="//c.58cdn.com.cn/zt/house/zhanling/index.html" class="jg-hot-wrap">hot</a>',
+    a == 'sh' ? adTip : '',
+    '</h2>',
+    '<ul class="jg-command-house-wrap">'
+].join('');
+
+console.log(o1, 'color:red');

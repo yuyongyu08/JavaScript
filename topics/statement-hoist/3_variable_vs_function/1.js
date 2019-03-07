@@ -1,13 +1,13 @@
 
-foo();
-
-var foo = function () {
-    console.log('函数表达式');
-};
-
-function foo() {
-    console.log('函数声明');
-}
+// foo();
+//
+// var foo = function () {
+//     console.log('函数表达式');
+// };
+//
+// function foo() {
+//     console.log('函数声明');
+// }
 
 
 /**
@@ -17,3 +17,37 @@ function foo() {
 
 
 //解析后：
+// function foo() {
+//     console.log('函数声明');
+// }
+//
+// var foo;
+//
+// foo();
+//
+// foo = function () {
+//     console.log('函数表达式');
+// };
+
+
+
+//疑问
+
+function foo() {
+    console.log('函数声明');
+}
+
+var foo;
+
+foo();
+
+foo = function () {
+    console.log('函数表达式');
+};
+
+foo();
+
+
+
+
+

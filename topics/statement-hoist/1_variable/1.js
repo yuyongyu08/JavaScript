@@ -1,7 +1,7 @@
-var a = 2;
-
-console.log(a);
-
+// var a = 2;
+//
+// console.log(a);
+//
 
 /**
  * 1、赋值表达式 =》 声明 + 赋值
@@ -11,3 +11,8 @@ console.log(a);
 
 
 //解析后：
+var a;
+
+a = 2;
+
+console.log(a);
