@@ -8,11 +8,17 @@ let myObject = {
 
 /**
  * 方法1：for...in...
- * 遍历key，自有属性+原型属性
+ * 遍历key，自有属性+【原型属性】
  */
 for (let item in myObject) {
   console.log(item);
 }
+
+
+//报错：【TypeError: myObject is not iterable】
+// for (let item of myObject) {
+//     console.log(item);
+// }
 
 
 /**

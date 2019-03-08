@@ -10,7 +10,7 @@ for (let i = 0, length = myArray.length; i < length; i++) {
 
 
 /**
- * 方法2：for...in..
+ * 方法2：for...in.. 【不推荐！！！myArray.a = 123，会把a也遍历出来】
  * 遍历索引
  */
 for (let i in myArray){
@@ -27,29 +27,50 @@ for (let i of myArray) {
 }
 
 
-/**
- * 方法4：Object.keys()、Object.values()、Object.entries()
- */
-
-//遍历索引
-Object.keys(myArray).forEach(function (value, index, array) {
-    console.log(myArray[value]);
-});
-
-//遍历元素
-Object.values(myArray).forEach(function (value, index, array) {
-    console.log(value);
-});
-
-//遍历[索引, 元素]
-Object.entries(myArray).forEach(function (value, index, array) {
-    console.log(value[1]);
-});
-
 
 /**
- * 方法5：forEach
+ * 方法4：forEach
  */
 myArray.forEach(function (value, index, array) {
     console.log(value);
 });
+
+
+myArray.every((value, index, array) => {
+    value += '~';
+   console.log('myArray.every:', value);
+   return true
+});
+
+
+myArray.some((value, index, array) => {
+    console.log('myArray.some:', value);
+    return false
+});
+
+
+myArray.filter((value, index, array) => {
+    console.log('myArray.filter:', value);
+    return false
+});
+
+
+myArray.map((value, index, array) => {
+    console.log('myArray.map:', value);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

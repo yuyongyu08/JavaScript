@@ -5,5 +5,6 @@ map.set('birthday', '1991');
 
 console.log(map); //Map { 'name' => 'yuyy', 'gender' => 'male', 'birthday' => '1991' }
 
-//转Array
+//【转Array】
 console.log(Array.from(map)); //[ [ 'name', 'yuyy' ],[ 'gender', 'male' ],[ 'birthday', '1991' ] ]
+
