@@ -1,20 +1,35 @@
+function getPosition(index, arr){
+    if(index <= arr[0]){
+        return 0
+    }else if(index + arr[arr.length-1] >= arr.reduce((p,c) => p+c)){
+        return arr.length-1
+    }else{
+        let total=0;
+        for (let j=0, k=arr.length; j<k; j++){
+            total+=arr[j];
+            if(index <= total){
+                return j
+            }
+        }
+    }
+}
 
-let o = [
-    '<h2 class="jg-title">{{t_title}}<a href="//c.58cdn.com.cn/zt/house/zhanling/index.html" class="jg-hot-wrap">hot</a></h2>',
-    '<ul class="jg-command-house-wrap">'
-].join('');
+function getPosition_1(index, arr) {
+    let n_arr = arr;
+    for (let j=0, k=arr.length; j<k; j++){
+        let last = arr.pop();
+        if(index + last >= arr.reduce((p,c) => p+c)){
+            return arr.length-1
+        }
+    }
+}
 
-console.log(o);
+console.log(getPosition(1, [2,3,5]));
+console.log(getPosition(4, [2,3,5]));
+console.log(getPosition(7, [2,3,5]));
+console.log(getPosition(10, [2,3,5]));
 
-let adTip = '<span class="ad">广告</span>';
-let a = 'sh1'
-
-let o1 = [
-    '<h2 class="jg-title">{{t_title}}',
-    '<a href="//c.58cdn.com.cn/zt/house/zhanling/index.html" class="jg-hot-wrap">hot</a>',
-    a == 'sh' ? adTip : '',
-    '</h2>',
-    '<ul class="jg-command-house-wrap">'
-].join('');
-
-console.log(o1, 'color:red');
+console.log(getPosition_1(1, [2,3,5]));
+console.log(getPosition_1(4, [2,3,5]));
+console.log(getPosition_1(7, [2,3,5]));
+console.log(getPosition_1(10, [2,3,5]));
