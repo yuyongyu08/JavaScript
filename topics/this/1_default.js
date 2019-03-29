@@ -1,18 +1,8 @@
-function print() {
-    console.log('name:', this.name);
-    console.log('age:', this.age);
+var name = 'Tom';
+
+function sayName() {
+    console.log(`Hi, I am ${this.name}!`);
 }
 
-var name = 'yuyy';
-var age = '18';
-
-
-print();
-
-function foo() {
-    console.log(this.a);
-}
-
-var a = 2;
-
-foo();
+//this隐式指向全局
+sayName(); //非严格模式下正常

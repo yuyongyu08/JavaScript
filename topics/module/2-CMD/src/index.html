@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMD</title>
+    <script src="../lib/sea.js"></script>
+</head>
+<body>
+    <h1 id="h1">hello CMD!</h1>
+    <button id="btn">加载bar.js</button>
+
+    <script>
+        // seajs 的简单配置
+        seajs.config({
+            base: "../src/"
+        });
+
+        // 加载入口模块
+        seajs.use("./app")
+    </script>
+</body>
+</html>

@@ -1,12 +1,22 @@
-let name = 'glob';
-
-let user = {
-    sayHi: function () {
-        console.log(`hi, I am ${this.name}!`);
+let Tom = {
+    name: 'Tom',
+    sayName: function () {
+        console.log(`Hi, I am ${this.name}!`);
     }
 };
 
+Tom.sayName();
 
-let fn = user.sayHi;
 
-fn();
+function sayName() {
+    console.log(`Hi, I am ${this.name}!`);
+}
+let Jery = {
+    name: 'Jery',
+    sayName: Tom.sayName,
+    sayName1: sayName,
+};
+
+//this隐式指向Jery
+Jery.sayName();
+Jery.sayName1();

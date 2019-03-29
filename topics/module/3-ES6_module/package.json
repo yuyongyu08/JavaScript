@@ -4,13 +4,14 @@
   "description": "js training",
   "main": "index.js",
   "scripts": {
-    "compile": "npx babel src --out-dir dist --presets=env",
+    "compile": "rm -rf ./dist && npx babel src --out-dir dist --presets=@babel/preset-env -w",
     "start": "node dist/import.js "
   },
   "author": "yuyy",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2"
   }
 }
