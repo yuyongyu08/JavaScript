@@ -11,12 +11,12 @@ let Tom = {
 Tom.sayName();
 Tom.sayTitle(['developer']);
 
-let Jery = {
-    name: 'Jery'
+let Jerry = {
+    name: 'Jerry'
 };
 
 
 //this显式指向Jery
-Tom.sayTitle.apply(Jery, [['developer', 'programmer', 'engineer']]);
-Tom.sayTitle.call(Jery, ['developer', 'programmer', 'engineer']);
-Tom.sayTitle.bind(Jery)(['developer', 'programmer', 'engineer']);
+Tom.sayTitle.apply(Jerry, [['developer', 'programmer', 'engineer']]);
+Tom.sayTitle.call(Jerry, ['developer', 'programmer', 'engineer']);
+Tom.sayTitle.bind(Jerry)(['developer', 'programmer', 'engineer']);

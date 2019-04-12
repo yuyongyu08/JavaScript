@@ -1,6 +1,6 @@
 function sayName(name) {
     this.name = name;
-    console.log(this.name);
+    console.log(`I\'m ${this.name}`);
 }
 
 let Tom = {
@@ -13,7 +13,7 @@ Tom.sayName('Tom');
 console.log(Tom.name);
 
 //new
-let jery = new Tom.sayName('Jery');
-console.log(jery.name);
+let jerry = new Tom.sayName('Jerry');
+console.log(jerry.name);
 
 //优先级：new > 隐式

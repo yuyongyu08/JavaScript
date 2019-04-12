@@ -1,22 +1,22 @@
 function sayName(name) {
     this.name = name;
-    console.log(this.name);
+    console.log(`I\'m ${this.name}`);
 }
 
 let Tom = {
     sayName: sayName
 };
 
-let Jery = {};
+let Jerry = {};
 
 //显式
-let jery = Tom.sayName.bind(Jery);
-jery('Jery');
-console.log(Jery.name);
+let jerry = Tom.sayName.bind(Jerry);
+jerry('Jerry');
+console.log(Jerry.name);
 
 
 //new
-let jack = new jery('Jack');
+let jack = new jerry('Jack');
 console.log(jack.name);
 
 //优先级：new > 显式

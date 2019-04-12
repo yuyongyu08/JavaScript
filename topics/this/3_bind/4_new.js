@@ -9,6 +9,6 @@ function Person(name) {
 let Tom = new Person('Tom');
 Tom.sayName();
 
-let Jery = new Person('Jery');
-Jery.sayName();
+let Jerry = new Person('Jerry');
+Jerry.sayName();
 

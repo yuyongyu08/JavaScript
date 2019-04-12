@@ -1,5 +1,5 @@
 function sayName() {
-    console.log(this.name);
+    console.log(`I\'m ${this.name}`);
 }
 
 var Tom = {
@@ -7,17 +7,17 @@ var Tom = {
     sayName: sayName
 };
 
-var Jery = {
-    name: 'Jery',
+var Jerry = {
+    name: 'Jerry',
     sayName: sayName
 };
 
 //隐式
 Tom.sayName();
-Jery.sayName();
+Jerry.sayName();
 
 //显式
-Tom.sayName.call(Jery);
-Jery.sayName.call(Tom);
+Tom.sayName.call(Jerry);
+Jerry.sayName.call(Tom);
 
 //优先级：显式 > 隐式

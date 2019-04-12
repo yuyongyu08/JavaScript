@@ -11,12 +11,12 @@ Tom.sayName();
 function sayName() {
     console.log(`Hi, I am ${this.name}!`);
 }
-let Jery = {
-    name: 'Jery',
+let Jerry = {
+    name: 'Jerry',
     sayName: Tom.sayName,
     sayName1: sayName,
 };
 
-//this隐式指向Jery
-Jery.sayName();
-Jery.sayName1();
+
+Jerry.sayName();//this隐式指向Jery
+Jerry.sayName1();
