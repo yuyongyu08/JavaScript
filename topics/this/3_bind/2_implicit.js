@@ -18,5 +18,5 @@ let Jerry = {
 };
 
 
-Jerry.sayName();//this隐式指向Jery
+Jerry.sayName();//this隐式指向Jerry
 Jerry.sayName1();

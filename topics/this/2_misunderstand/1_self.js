@@ -7,7 +7,7 @@ function counter(num) {
 
 counter.count = 0;
 
-for (var i = 1; i < 5; i++ ){
+for (var i = 1; i <= 5; i++ ){
     counter(i)
 }
 

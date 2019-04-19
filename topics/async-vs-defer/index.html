@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>async和defer</title>
+    <style>
+        img{
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+<ul>
+    <li>普通，下载：阻断html解析，执行：阻断html解析，下载完就执行</li>
+    <li>async，下载：和html解析并行进行，执行：阻断html解析，下载完就执行，执行顺序不定</li>
+    <li>defer，下载：和html解析并行进行，执行：在html解析完成后才执行，执行顺序和下载顺序一致</li>
+</ul>
+
+<h2>与DOMContentLoaded的关系</h2>
+<ul>
+    <li>async:HTML 文档构建不受影响，解析完毕后，DOMContentLoaded 触发，而不需要等待 async 脚本执行、样式表加载等等</li>
+    <li>defer:在 DOM、CSSOM 构建完毕，defer 脚本执行完成之后，DOMContentLoaded 事件触发</li>
+</ul>
+
+<img src="./async-defer.png">
+
+
+<script type="text/javascript">
+    console.log('inline');
+    document.getElementById('app').innerText = 'hello world!';
+
+    document.addEventListener('DOMContentLoaded', function(event) {
+        console.log("DOM fully loaded and parsed"); // 先打印
+    });
+    window.addEventListener('load', function(event) {
+        console.log("img loaded"); // 后打印
+    });
+
+</script>
+<script type="text/javascript" src="./index.js"></script>
+<script type="text/javascript" async src="./async1.js"></script>
+<script type="text/javascript" async src="./async2.js"></script>
+<script type="text/javascript" defer src="./defer1.js"></script>
+<script type="text/javascript" defer src="./defer2.js"></script>
+</body>
+</html>

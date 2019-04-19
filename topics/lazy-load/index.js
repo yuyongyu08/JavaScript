@@ -27,7 +27,11 @@
         }
     }
 
-
+    /*
+    * 原理：元素的位置高度
+    * 元素位置 < 屏幕可视高度 + 滚动高度
+    *
+    * */
     function elementInView(element){
         var viewHeight = getViewHeight();
         var scrollTop = getScrollTop();
@@ -53,9 +57,11 @@
         return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     }
 
-    //元素位置
+    //元素位置：考虑到定位元素的后代元素和一些其他元素（表格单元），offsetTop是相对于祖先元素情况，递归获取
     function getOffsetTop(el) {
-        return el.offsetTop;
+        return el.offsetParent
+            ? el.offsetTop + getOffsetTop(el.offsetParent)
+            : el.offsetTop
     }
 
     init(document.querySelectorAll("[data-src]"));
