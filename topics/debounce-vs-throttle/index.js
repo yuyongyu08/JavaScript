@@ -1,65 +1,15 @@
 ;(function () {
-    // import debounce1 from '../solution/debounce';
-    // let throttle = require('../solution/throttle');
+    function callback(id) {
+        let el = document.getElementById(id);
 
-    /*
-    * 防抖原理：每次触发后，在约定时间之后执行，如果在约定时间前再次触发，则重制等待时间
-    *
-    * */
-    function debounce(cb, wait) {
-        let timer = null;
-
-        return function () {
-            clearTimeout(timer);
-            timer = setTimeout(function () {
-                cb.apply(this, arguments);
-            }, wait)
-        }
+        let counter = el.dataset.counter;
+        let c = parseInt(counter) + 1;
+        el.dataset.counter = c;
+        el.innerText = c;
     }
 
-    /*
-    * 节流原理：每次触发后，立即执行，但在约定时间内再次触发都不执行，保证约定时间内只执行一次
-    *
-    * */
-    function throttle(cb, wait) {
-        let timer = null;
-
-        return function () {
-            if(!timer){
-                cb.apply(this, arguments);
-
-                timer = setTimeout(function () {
-                    clearTimeout(timer);
-                    timer = null;
-                }, wait)
-            }
-        }
-    }
-
-    function callback() {
-        let c = window.counter++;
-        console.log(c);
-        document.getElementById('app').innerText = c;
-    }
-
-    function changeWay(type) {
-        document.removeEventListener('mousemove', window.cb);
-
-        window.cb = null;
-        if(type == 1){
-            cb = debounce(callback, 200)
-        }else if (type == 2){
-            cb = throttle(callback, 200)
-        }else{
-            cb = callback;
-        }
-
-        document.addEventListener('mousemove', window.cb)
-    }
-
-    window.changeWay = changeWay;
-    window.counter = 0;
-
-
+    let zone = document.getElementById('app');
+    zone.addEventListener('mousemove', callback.bind(null, 'normal'));
+    zone.addEventListener('mousemove', debounce(callback.bind(this, 'debounce'), 200));
+    zone.addEventListener('mousemove', throttle(callback.bind(this, 'throttle'), 200));
 })();
-
