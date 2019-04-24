@@ -1,13 +1,13 @@
-let org = {
+let from = {
     name: 'yuyy',
     age: 18
 };
 
-let tar = {};
+let to = {};
 
-tar = org;
+to = from;
 
-tar.j = org;
+to.gender = from;
 
 function deepClone(source) {
     if(!source) return;
@@ -34,7 +34,7 @@ function deepClone(source) {
 }
 
 
-let newTar = deepClone(tar);
+let newTo = deepClone(to);
 
 
 

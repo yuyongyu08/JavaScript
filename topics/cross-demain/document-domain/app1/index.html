@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域document.domain</title>
+    <style>
+        iframe{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    Hllo, a
+</h1>
+
+<!--三级域名不同，端口相同-->
+<iframe id="a" src="http://app2.example.com:8000/a" onload="load(event)"></iframe>
+
+<!--三级域名相同，端口不同-->
+<iframe id="b" src="http://app1.example.com:9000/b" onload="load(event)"></iframe>
+
+<!--三级域名不同，端口不同-->
+<iframe id="c" src="http://app2.example.com:9000/c" onload="load(event)"></iframe>
+
+<script>
+    document.domain = 'example.com';
+    console.log('跨域取cookie:', document.cookie); //只有域名相同（端口可以不同）才能取到
+
+    function load(e) {
+        //通过获取iframe的window，操作iframe中的变量或方法，以此实现跨域的目的
+        let iframe = e.target;
+        var iframe_winddow = iframe.contentWindow;
+
+        console.log('pageName:', iframe_winddow.pageName);
+
+        iframe_winddow.getData()
+    }
+
+</script>
+</body>
+</html>
