@@ -1,13 +1,19 @@
 let from = {
     name: 'yuyy',
-    age: 18
+    age: 18,
+    user: {
+        a: 123
+    }
 };
 
 let to = {};
 
 to = from;
 
-to.gender = from;
+// to.gender = {...from};
+// to.gender = Object.assign({}, from);
+to.gender = Object.assign(from);
+// to.gender = deepClone(from);
 
 function deepClone(source) {
     if(!source) return;
@@ -35,6 +41,6 @@ function deepClone(source) {
 
 
 let newTo = deepClone(to);
-
+console.log(newTo);
 
 
