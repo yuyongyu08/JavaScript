@@ -17,11 +17,12 @@ p2.sayName();
 
 console.log(p1.constructor); // [Function: Person]
 console.log(p1.constructor === Person); // true
+console.log(p1 instanceof Person); //true
 
 console.log(p2.constructor); // [Function: Person]
 console.log(p2.constructor === Person); // true
+console.log(p2 instanceof Person); //true
 
 /*
-* 构造函数方式弊端：每个方法都要在每个实例中创建一边
-*
+* 【弊端】：每个方法都要在每个实例中创建一边
 * */

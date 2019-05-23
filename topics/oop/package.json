@@ -1,0 +1,17 @@
+{
+  "name": "oop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ES5.js",
+  "scripts": {
+    "build": "npx babel ES6.js --out-file ES6_to_ES5.js --presets=@babel/preset-env"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5"
+  }
+}

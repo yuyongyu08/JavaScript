@@ -20,12 +20,15 @@ p2.sayName();
 
 
 /*
-* 工厂模式弊端：无法识别对象类型
-*
+* 【弊端】：无法识别对象类型
 * */
 
 console.log(p1.constructor); // [Function: Object]
 console.log(p1.constructor === Object); // true
+console.log(p1 instanceof createPerson); //false
+
 
 console.log(p2.constructor); // [Function: Object]
 console.log(p2.constructor === Object); // true
+console.log(p1 instanceof createPerson); //false
+

@@ -3,38 +3,13 @@ let org = {
     age: 18
 };
 
-let tar = {};
+let tar = {
+    a:1,
+    b:2,
+    ...org
+};
 
-tar = org;
-
-tar.j = org;
-
-function deepClone(source) {
-    if(!source) return;
-
-    let target = null;
-    switch (true){
-        case Array.isArray(source):
-            target = [];
-            source.forEach((item) => {
-                target.push(deepClone(item));
-            });
-            break;
-        case Object.getPrototypeOf(source) === Object.prototype:
-            target = {};
-            Object.keys(source).forEach((key) => {
-                target[key] = deepClone(source[key])
-            });
-            break;
-        default:
-            target = source;
-    }
-
-    return target
+function s1(p,h,j) {
+    console.log(p);
 }
-
-
-let newTar = deepClone(tar);
-
-
-
+s1(...org);

@@ -20,7 +20,19 @@ console.log(p1.colors); // [ 'red', 'pink' ]
 console.log(p2.colors); // [ 'green' ]
 
 /*
-* 构造函数里放 属性
-* 原型里放 方法
-*
+* 【属性】放在构造函数中
+* 【方法】放在原型中
+* */
+
+console.log(p1.constructor); // [Function: Object]
+console.log(p1.constructor === Object); // true
+console.log(p1 instanceof Person); //false
+
+
+console.log(p2.constructor); // [Function: Object]
+console.log(p2.constructor === Object); // true
+console.log(p2 instanceof Person); //false
+
+/*
+* TODO 最常使用的一种模式！！！
 * */
