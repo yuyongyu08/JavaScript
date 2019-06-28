@@ -24,7 +24,7 @@ function greet (name) {
 // exports.greet = greet;
 
 //exports和module.exports指向同一个对象
-console.log(exports === module.exports);
+// console.log(exports === module.exports);
 
 
 
@@ -48,8 +48,8 @@ module.exports = {
 };
 
 
-console.log('exports:', exports);
-console.log('require:', require);
-console.log('module:', module);
-console.log('__filename:', __filename);
-console.log('__dirname:', __dirname);
+// console.log('exports:', exports);
+// console.log('require:', require);
+// console.log('module:', module);
+// console.log('__filename:', __filename);
+// console.log('__dirname:', __dirname);

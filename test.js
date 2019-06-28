@@ -1,15 +1,7 @@
-let org = {
-    name: 'yuyy',
-    age: 18
-};
+let a;
 
-let tar = {
-    a:1,
-    b:2,
-    ...org
-};
+let v1 = a && a.b;
+console.log(v1);
 
-function s1(p,h,j) {
-    console.log(p);
-}
-s1(...org);
+let v2 = a.b;
+console.log(v2);
