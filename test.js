@@ -1,8 +1,15 @@
-let a;
+let org = {
+    name: 'yuyy',
+    age: 18
+};
 
-let v1 = a && a.b;
-console.log(v1);
+let tar = {
+    a:1,
+    b:2,
+    ...org
+};
 
-let v2 = a.b;
-console.log(v2);
-console.log('test revert');
+function s1(p,h,j) {
+    console.log(p);
+}
+s1(...org);
