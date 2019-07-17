@@ -14,8 +14,7 @@ console.log(person.__proto__ === Person.prototype); // true
 console.log(Person.__proto__ === Function.prototype); // true
 
 
-
-//第三步验证
+//第三步验证（注意！）
 console.log(Function.__proto__ === Function.prototype); // true
 
 
@@ -28,7 +27,9 @@ console.log(Function.prototype.__proto__.constructor === Object);
 
 
 
-//__proto__最初是一个非标准属性，ES6已将其标准化，可以用标准方法Object.getPrototypeOf()替代，本文处于举例的直观性考虑，在ES6环境仍采用此属性。
+//原型指针（__proto__）最初是一个非标准属性，ES6已将其标准化，可以用标准方法Object.getPrototypeOf()替代，本文处于举例的直观性考虑，在ES6环境仍采用此属性。
+console.log(Object.getPrototypeOf(person) === Person.prototype); // true
+
 
 
 

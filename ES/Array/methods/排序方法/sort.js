@@ -12,7 +12,10 @@ console.log(arr.sort(function (a, b) {
 console.log(arr); // [ 5, 5, 10, 54, 333 ]
 
 
-console.log(arr.sort(function (a, b) {
-    return a < b
-})); // [ 333, 54, 10, 5, 5 ]
-console.log(arr); // [ 333, 54, 10, 5, 5 ]
+// console.log(arr.sort(function (a, b) {
+//     return a < b
+// })); // [ 333, 54, 10, 5, 5 ]
+// console.log(arr); // [ 333, 54, 10, 5, 5 ]
+
+console.log(arr.sort((a, b) => a < b));
+console.log(arr);

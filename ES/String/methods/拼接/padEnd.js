@@ -1,5 +1,6 @@
 
 let string = 'hello';
+new String()
 
 console.log(string.padEnd(0)); //hello
 console.log(string); //hello

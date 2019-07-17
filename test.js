@@ -1,15 +1,1 @@
-let org = {
-    name: 'yuyy',
-    age: 18
-};
-
-let tar = {
-    a:1,
-    b:2,
-    ...org
-};
-
-function s1(p,h,j) {
-    console.log(p);
-}
-s1(...org);
+let str = 'https://wx.zu.anjuke.com/fangyuan/1377557300?isauction=2&shangquan_id=4724&legoFeeUrl=https%3A%2F%2Flegoclick.58.com%2Fjump%3Ftarget%3DpZwY0ZnlsztdraOWUvYKuadBmyEQnHbOrid6uhnLsHE1PvEVmWIbPzdhnyDOuhn3uWbznjTKPj0znWmvnkDKnHT1rjT3PWTznWmQrHD1PkDQn19knTDQn19knTDQsjDkTHDkrTDQPHmzP1EdPjcvn1mzTHDKwbnVNDnVENGssXXMMSpcfzLG8OWCoJH-BFxCCpWGCUNKnEDQTEDVnEDKnHDYrj9dnjDOPjDvn1EYPH0vnTDvTEDQTyDvnhmduHKWsH0QnhDVPjDLraYOPAEOsyRWmvRbP1RhPHRbPTDQnHE3rjNknHbYnW0zPjbLPWmYTHDQPj93PHTQrHEznH0OP1N3nj9KTEDKTEDVTEDKpZwY0ZnlszqLXaOlIiO6UhGdpvN8mvqVs1qh0hqV5yO6Ih-MmgwGUv3KE1bdrjN1E1TVPNuDniYdEbmvsHPDwNcVnWmzPj9LwWIDnbFaTHDksWcdnB3vnB3QPkDkTHTKTHD_nHDKXLYKnHTkn1mKnHTknHmvPTDOnA76njIBuBYLP1mQsHEOn1bVmyN3uid-nWR6ryE1uj9dPjTKTHEKTED1THDkrakQnWm3sjELnWEKnjbOuHE3n10zn1mkuyuWnT'
