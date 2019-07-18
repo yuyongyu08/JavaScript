@@ -1,30 +1,28 @@
-let arr = [77, 66, 55, 55, 44, 33, 22, 11];
+let createRandomArray = require('../createRandomArray');
 
 /*
 * @param (Array)array 原数组
 * @param (Boolean)asc 升序
 * */
-function bubbleSort(array, asc) {
-    for (let i = 0, length = array.length; i < length; i++){ //外层循环控制趟数，总趟数为len-1
-        for(let j = 0; j < length - i - 1; j++){ //内层循环为当前趟数所需要比较的次数
-            let temp = array[j];
+function bubbleSortNew(arr = [], asc = true) {
+    let arrSize = arr.length;
+    for (let i = 0; i < arrSize; i++){
+        for (let j = 0; j < arrSize - 1 - i; j++){ //TODO 容易犯错，对于已经排过序无需再参与遍历
+            let [x, y] = [arr[j], arr[j+1]];
 
             if(asc){
-                if(array[j] > array[j+1]){
-                    array[j] = array[j+1];
-                    array[j+1] = temp;
-                }
+                x > y ? [arr[j], arr[j+1]] = [y, x]: ''
             }else{
-                if(array[j] < array[j+1]){
-                    array[j] = array[j+1];
-                    array[j+1] = temp;
-                }
+                x < y ? [arr[j], arr[j+1]] = [y, x] : ''
             }
-
         }
     }
 
-    return array
+    return arr
 }
 
-console.log(bubbleSort(arr, true));
+
+arr = createRandomArray(11);
+console.log('原数组:', arr);
+console.log('升序： ', bubbleSortNew(arr));
+console.log('降序： ', bubbleSortNew(arr, false));
