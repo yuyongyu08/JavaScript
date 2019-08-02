@@ -22,25 +22,24 @@ function _createClass(Constructor, protoProps, staticProps) {
     return Constructor;
 }
 
-var Student =
+var Person =
     /*#__PURE__*/
     function () {
-        function Student(firstName, lastName) {
-            _classCallCheck(this, Student);
+        function Person(name) {
+            _classCallCheck(this, Person);
 
-            this.firstName = firstName;
-            this.lastName = lastName;
+            this.name = name;
         }
 
-        _createClass(Student, [{
-            key: "greeter",
-            value: function greeter() {
-                console.log("Hello, ".concat(this.firstName, ".").concat(this.lastName));
+        _createClass(Person, [{
+            key: "sayName",
+            value: function sayName() {
+                console.log('name: ', this.name);
             }
         }]);
 
-        return Student;
+        return Person;
     }();
 
-var student = new Student('yu', 'yongyu');
-student.greeter();
+var person = new Person('John');
+person.sayName();

@@ -1,3 +1,9 @@
+
+/*
+* 【属性】放在构造函数中
+* 【方法】放在原型中
+* */
+
 function Person(name, age, job, colors) {
     this.name = name;
     this.age = age;
@@ -19,10 +25,6 @@ p1.colors.push('pink');
 console.log(p1.colors); // [ 'red', 'pink' ]
 console.log(p2.colors); // [ 'green' ]
 
-/*
-* 【属性】放在构造函数中
-* 【方法】放在原型中
-* */
 
 console.log(p1.constructor); // [Function: Object]
 console.log(p1.constructor === Object); // true

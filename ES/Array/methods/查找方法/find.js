@@ -20,4 +20,4 @@ let personList = [
     }
 ];
 
-console.log(personList.find((v) => v.id==1 || v.id==2));
+console.log(personList.find((v) => v.id==1 || v.id==2)); //{ id: '1', name: 'yuyy' }
