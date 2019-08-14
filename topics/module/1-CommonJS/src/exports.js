@@ -36,7 +36,7 @@ console.log(exports === module.exports);
 //     greet: greet
 // };
 
-//推荐做法2
+//推荐做法2(ES6语法支持)
 module.exports = {
     firstName,
     lastName,
@@ -51,5 +51,5 @@ module.exports = {
 console.log('exports:', exports);
 console.log('require:', require);
 console.log('module:', module);
-console.log('__filename:', __filename);
-console.log('__dirname:', __dirname);
+console.log('__filename:', __filename); //当前模块的文件（绝对路径）
+console.log('__dirname:', __dirname);//当前模块所在的文件夹（绝对路径）
