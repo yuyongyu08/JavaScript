@@ -1,17 +1,2 @@
-let arr =  [1,2,5,1,6,2,2];
-
-
-function handleArray(arr = [], desc = true) {
-    let newArr = [];
-    arr.forEach((v) => {
-        let index = newArr.findIndex(r => r.key === v);
-        index > -1 ? newArr[index].count++ : newArr.push({key: v, count: 1})
-    });
-
-    newArr = newArr.sort((a, b) => desc ? a.count > b.count : a.count <= b.count).map(item => item = item.key);
-
-    return newArr
-}
-
-console.log('升序：', handleArray(arr));
-console.log('降序：',handleArray(arr,false));
+// eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _foo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./foo */ \"./src/foo.js\");\n/* harmony import */ var _bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bar */ \"./src/bar.js\");\n\n\nObject(_foo__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n_bar__WEBPACK_IMPORTED_MODULE_1__[\"default\"].log();\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("console.log(111)");

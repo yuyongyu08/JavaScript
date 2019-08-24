@@ -1,3 +1,13 @@
+/*
+* reduce(callback(initValue, currentValue, currentInde, array), initValue)
+*
+* 不改变原数组
+**/
+
+
+
+
+
 let arr = [1, 2, 3, 4, 5];
 
 
