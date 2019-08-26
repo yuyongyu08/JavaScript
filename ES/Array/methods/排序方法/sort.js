@@ -19,3 +19,28 @@ console.log(arr); // [ 5, 5, 10, 54, 333 ]
 
 console.log(arr.sort((a, b) => a < b));
 console.log(arr);
+
+
+let objArr = [
+    {
+        text: '不展示',
+        value: 0
+    },
+    {
+        text: '区域',
+        value: 2
+    },
+    {
+        text: '地铁',
+        value: 3
+    },
+
+];
+
+objArr.push( {
+    text: '附近',
+    value: 1
+});
+
+objArr.sort((a, b) => a.value > b.value);
+console.log(objArr);
