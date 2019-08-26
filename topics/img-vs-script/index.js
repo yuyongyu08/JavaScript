@@ -20,6 +20,9 @@ function sendByScript(src){
 function sendByScriptInsertDOM(src){
     var script = document.createElement("script");
     script.src = src;
+    script.onload = function () {
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).removeChild(script)
+    };
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
 }
 

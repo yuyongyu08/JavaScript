@@ -17,9 +17,6 @@
     function sendByScriptInsertDOM(src){
         var script = document.createElement("script");
         script.src = src;
-        script.onload = function () {
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).removeChild(script)
-        };
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
     }
 
@@ -35,11 +32,11 @@
 
     function sendRequest(src) {
         //通过script：【必须】要拼接到DOM才会触发请求
-        //不插入DOM
+        //不插入DOM，不会触发请求
         sendByScript(src + '/byScript');
 
-        //插到DOM中
-        sendByScriptInsertDOM(src + '/byScriptDOM');//会触发
+        //插到DOM中，会触发请求
+        sendByScriptInsertDOM(src + '/byScriptDOM');
 
         //通过img：【无需】拼接到DOM就会触发请求
         //方式1：通过Image对象
