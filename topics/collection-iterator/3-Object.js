@@ -7,11 +7,11 @@ let myObject = {
 };
 
 /**
- * 方法1：for...in...
- * 遍历key，自有属性+【原型属性】
+ * 1.for...in... 【不推荐】
+ * 遍历key，自有属性+原型属性
  */
 for (let item in myObject) {
-  console.log(item);
+  console.log('for...in:', myObject[item]);
 }
 
 
@@ -22,25 +22,24 @@ for (let item in myObject) {
 
 
 /**
- * 方法2：Object.keys()、Object.values()、Object.entries()
+ * 2.Object.keys()、Object.values()、Object.entries()
  * 自有属性
  */
 
-//遍历key
+//遍历索引
 Object.keys(myObject).forEach(function (value, index, array) {
-    console.log(myObject[value]);
+    console.log('Object.keys:', myObject[value]);
 });
 
-//遍历value
+//遍历元素
 Object.values(myObject).forEach(function (value, index, array) {
-    console.log(value);
+    console.log('Object.values:', value);
 });
 
-//遍历[key, value]
+//遍历[索引, 元素]
 Object.entries(myObject).forEach(function (value, index, array) {
-    console.log(value[1]);
+    console.log('Object.entries:', value[1]);
 });
-
 
 
 /*
@@ -51,6 +50,6 @@ Object.entries(myObject).forEach(function (value, index, array) {
  * 方法3：Object.getOwnPropertyNames()
  */
 Object.getOwnPropertyNames(myObject).forEach(function (value, index, array) {
-    console.log(myObject[value]);
+    console.log('Object.getOwnPropertyNames:', myObject[value]);
 });
 

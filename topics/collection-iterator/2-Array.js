@@ -1,59 +1,77 @@
 let myArray = ['yuyongyu', 'yongyu', 'yuyy', 'yyy', 'y'];
 
 /**
- * 方法1：for
- * 遍历索引
+ * 1.for...
+ * 缺点：繁琐
  */
 for (let i = 0, length = myArray.length; i < length; i++) {
-    console.log(myArray[i]);
+    console.log('for...', myArray[i]);
 }
 
 
 /**
- * 方法2：for...in.. 【不推荐！！！myArray.a = 123，会把a也遍历出来】
- * 遍历索引
+ * 2.for...in.. 【不推荐！】
+ * 缺点：遍历数字键名，会遍历手动添加的其他键，甚至包括原型链上的键
  */
 for (let i in myArray){
-    console.log(myArray[i]);
+    console.log('for...in:', myArray[i]);
 }
 
 
 /**
- * 方法3：for...of...
- * 遍历元素
+ * 3.for...of...  【推荐】
+ *
  */
 for (let i of myArray) {
-    console.log(i);
+    console.log('for...of:', i);
 }
 
 
+/*
+* 4.Object.entries()、Object.keys()、Object.values()
+*/
 
-/**
- * 方法4：forEach
- */
-myArray.forEach(function (value, index, array) {
-    console.log(value);
+//遍历索引
+Object.keys(myArray).forEach(function (value, index, array) {
+    console.log('Object.keys:', myArray[value]);
+});
+
+//遍历元素
+Object.values(myArray).forEach(function (value, index, array) {
+    console.log('Object.values:', value);
+});
+
+//遍历[索引, 元素]
+Object.entries(myArray).forEach(function (value, index, array) {
+    console.log('Object.entries:', value[1]);
 });
 
 
+/**
+ * 5.forEach
+ * 缺点：不可以与break、continue和return配合使用
+ */
+myArray.forEach(function (value, index, array) {
+    console.log('forEach:', value);
+});
+
+/*
+* 方法6：其他遍历方法
+*/
 myArray.every((value, index, array) => {
-    value += '~';
    console.log('myArray.every:', value);
    return true
 });
-
 
 myArray.some((value, index, array) => {
     console.log('myArray.some:', value);
     return false
 });
 
-
 myArray.filter((value, index, array) => {
     console.log('myArray.filter:', value);
     return false
 });
-
 
 myArray.map((value, index, array) => {
     console.log('myArray.map:', value);
