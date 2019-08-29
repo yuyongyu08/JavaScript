@@ -11,7 +11,7 @@ for (let i = 0, length = myArray.length; i < length; i++) {
 
 /**
  * 2.for...in.. 【不推荐！】
- * 缺点：遍历数字键名，会遍历手动添加的其他键，甚至包括原型链上的键
+ * 缺点：TODO 遍历数字键名，会遍历手动添加的其他键，甚至包括原型链上的键
  */
 for (let i in myArray){
     console.log('for...in:', myArray[i]);
@@ -46,9 +46,25 @@ Object.entries(myArray).forEach(function (value, index, array) {
     console.log('Object.entries:', value[1]);
 });
 
+/*
+* 5.keys()，values()，entries() 详见：http://es6.ruanyifeng.com/#docs/iterator#%E8%AE%A1%E7%AE%97%E7%94%9F%E6%88%90%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84
+* 返回的都是【Iterator对象】
+*/
+
+for (let item of myArray.keys()){
+    console.log('Array.keys:', myArray[item]);
+}
+
+for (let item of myArray.values()){
+    console.log('Array.values:', item);
+}
+
+for (let item of myArray.entries()){
+    console.log('Array.entries:', item[1]);
+}
 
 /**
- * 5.forEach
+ * 6.forEach
  * 缺点：不可以与break、continue和return配合使用
  */
 myArray.forEach(function (value, index, array) {
@@ -56,7 +72,7 @@ myArray.forEach(function (value, index, array) {
 });
 
 /*
-* 方法6：其他遍历方法
+* 7：其他遍历方法
 */
 myArray.every((value, index, array) => {
    console.log('myArray.every:', value);

@@ -44,8 +44,6 @@ Object.entries(arrLike).forEach(function (value, index, array) {
 });
 
 
-
-
 /**
  * 4.Array.slice()
  */
