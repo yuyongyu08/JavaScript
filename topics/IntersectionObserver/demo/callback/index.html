@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>entry</title>
+    <style>
+        #info{
+            position: fixed;
+        }
+        #img1,#img2{
+            position: absolute;
+            top: calc(100vh + 100px);
+            min-height: 100px;
+            min-width: 100px;
+        }
+
+        #img2{
+            top: calc(100vh + 500px);
+        }
+
+    </style>
+</head>
+<body>
+<div id="info">向下滚动有惊喜！</div>
+<img id="img1" data-src="http://hebei.sinaimg.cn/2013/0822/U9985P1275DT20130822172109.jpg">
+<img id="img2" data-src="http://photocdn.sohu.com/20091022/Img267621320.jpg">
+
+
+<script>
+    var observer = new IntersectionObserver((entries) => {
+        let entry = entries[0];
+        showKeys(entry);
+        if(entry.isIntersecting){
+            showKeys(entry);
+            entry.target.src = entry.target.dataset.src;
+            observer.unobserve(entry.target)
+        }
+    });
+    observer.observe(document.getElementById('img1'));
+    observer.observe(document.getElementById('img2'));
+
+    function showKeys(entry) {
+        Object.keys(entry).forEach((key)=>{
+            console.log(`${key}: ${entry.key}`);
+        })
+    }
+
+</script>
+</body>
+</html>

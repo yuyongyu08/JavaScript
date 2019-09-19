@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>disconnect</title>
+    <style>
+        #info{
+            position: fixed;
+        }
+        #app{
+            position: absolute;
+            top: calc(100vh + 100px)
+        }
+
+        img{
+            min-height: 100px;
+            min-width: 100px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="info">向下滚动有惊喜！</div>
+<div id="app">
+    <img id="img1" data-src="http://hebei.sinaimg.cn/2013/0822/U9985P1275DT20130822172109.jpg">
+    <img id="img2" data-src="http://photocdn.sohu.com/20091022/Img267621320.jpg">
+    <img id="img3" data-src="http://img3.imgtn.bdimg.com/it/u=2364901128,245815939&fm=214&gp=0.jpg">
+</div>
+
+<script>
+    var observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.log(entry.isIntersecting, entry.target);
+
+            if(entry.isIntersecting){
+                entry.target.src = entry.target.dataset.src;
+                observer.disconnect()  //只加载第一个，其他都不再加载
+            }
+        })
+    });
+    Array.from(document.getElementsByTagName('img')).forEach((ele) => {
+        observer.observe(ele)
+    })
+    // observer.disconnect()//全都不加载
+
+</script>
+</body>
+</html>
