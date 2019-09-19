@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test IntersectionObserver</title>
+    <style>
+        .boxs{
+            position: absolute;
+            top: 120%;
+        }
+        .box{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="boxs">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+
+<script>
+    let boxs = document.querySelectorAll('.box');
+
+    let observer = new IntersectionObserver(entries => {
+        console.log(entries);
+        console.log(`有${entries.length}个元素被观察`)
+
+        let intersectedArr = [];
+        entries.forEach(item => {
+            item.isIntersecting ? intersectedArr.push(item) : ''
+        });
+        console.log(`有${intersectedArr.length}个发生交叉`);
+    });
+
+    boxs.forEach(box => observer.observe(box))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test IntersectionObserver</title>
+    <style>
+        .box{
+            position: absolute;
+            top: 120%;
+            right: -120%;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+
+<script>
+    let box = document.querySelector('.box');
+
+    let observer = new IntersectionObserver(entries => {
+        console.log(`数组：${Array.isArray(entries)}`);
+        console.log(entries);
+        entries.forEach(item => {
+            let tips = item.isIntersecting ? '进入了父元素内部' : '离开了父元素内部';
+            console.log(tips);
+        })
+    });
+
+    observer.observe(box)
+</script>
+</body>
+</html>

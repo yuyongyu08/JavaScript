@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #root {
+            position: relative;
+            width: 200px;
+            height: calc(100vh + 500px);
+            margin: 0 auto;
+            overflow: scroll;
+            border: 1px solid #ccc;
+        }
+
+        #info {
+            position: fixed;
+        }
+
+        #target {
+            position: absolute;
+            top: calc(100vh + 1000px);
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="info">慢慢向下滚动</div>
+    <div id="target"></div>
+</div>
+
+<script>
+    let observer = new IntersectionObserver(() => {
+        if (!target.isIntersecting) {
+            info.textContent = "我和 root 相交了，但你还是看不见"
+            target.isIntersecting = true
+        } else {
+            info.textContent = "慢慢向下滚动"
+            target.isIntersecting = false
+        }
+    }, {
+        root: root
+    })
+
+    observer.observe(target)
+</script>
+</body>
+</html>

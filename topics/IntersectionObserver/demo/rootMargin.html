@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #info {
+            position: fixed;
+        }
+
+        #img {
+            position: absolute;
+            top: calc(100vh + 400px);
+            height: 400px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+<div id="info">图片在页面底部，请向下滚动加载图片</div>
+<img id="img" data-src="http://img1.imgtn.bdimg.com/it/u=181154166,2596936259&fm=214&gp=0.jpg">
+<script>
+    let observer = new IntersectionObserver((enties) => {
+        console.log('called');
+
+        let entry = enties[0];
+        if (entry.isIntersecting){
+            console.log('isIntersecting');
+            info.textContent = "开始加载图片！"
+            img.src = img.dataset.src
+            // img.src = img.dataset.src + '123'
+            // img.src = 'http://baidu.com'
+
+            //图片加载完成后解除观察
+            img.onload = function(){
+                console.log('loaded');
+                observer.unobserve(img)
+            }
+            img.onerror = function () {
+                console.log('img load fail');
+            }
+        }
+    }, {
+        rootMargin: "200px 0px"
+    })
+
+    observer.observe(img)
+</script>
+</body>
+</html>

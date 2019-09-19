@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #info {
+            position: fixed;
+        }
+
+        #target {
+            position: absolute;
+            top: 200%;
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="info">
+    慢慢向下滚动，相交次数：
+    <span id="times">0</span>
+</div>
+<div id="target"></div>
+
+<script>
+    let observer = new IntersectionObserver(() => {
+        console.log('called');
+        times.textContent = +times.textContent + 1
+    }, {
+        threshold: [0, 0.5, 1]
+        // threshold: [1]
+        // threshold: [0]
+    })
+
+    observer.observe(target)
+</script>
+</body>
+</html>
