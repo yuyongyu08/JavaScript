@@ -28,21 +28,36 @@
 
 <script>
     var observer = new IntersectionObserver((entries) => {
-        let entry = entries[0];
-        showKeys(entry);
-        if(entry.isIntersecting){
+        console.log(entries.length);
+        entries.forEach((entry) => {
+            console.log('==========================');
             showKeys(entry);
-            entry.target.src = entry.target.dataset.src;
-            observer.unobserve(entry.target)
-        }
+            if(entry.isIntersecting){
+                entry.target.src = entry.target.dataset.src;
+                // observer.unobserve(entry.target)
+            }
+        })
     });
+
+    //同步增加观察，会合并执行回调
     observer.observe(document.getElementById('img1'));
     observer.observe(document.getElementById('img2'));
 
+
+    //异步增加观察，不会合并执行回调函数
+    // setTimeout(() => {
+    //     observer.observe(document.getElementById('img2'));
+    // }, 2000)
+
+
     function showKeys(entry) {
-        Object.keys(entry).forEach((key)=>{
-            console.log(`${key}: ${entry.key}`);
-        })
+        console.log('time: ', entry.time); //相交发生时距离页面打开时的毫秒数（有小数）
+        console.log('target: ', entry.target); //相交发生时的目标元素
+        console.log('rootBounds: ', entry.rootBounds);//发生相交时【根元素】【可见区域】的矩形信息
+        console.log('boundingClientRect: ', entry.boundingClientRect, entry.target.getBoundingClientRect()); //相交时【目标元素】的矩形信息，等价于 target.getBoundingClientRect()
+        console.log('isIntersecting: ', entry.isIntersecting); //是否相交
+        console.log('intersectionRect: ', entry.intersectionRect);//根元素和目标元素【相交区域】的矩形信息
+        console.log('intersectionRatio: ', entry.intersectionRatio); //相交区域占目标元素区域的百分比，0 到 1 的数值，数值和速度有关
     }
 
 </script>
