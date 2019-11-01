@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>root为指定元素</title>
     <style>
         #root {
             position: relative;
-            width: 200px;
-            height: 100vh;
+            width: 400px;
+            height: 50vh;
             margin: 0 auto;
             overflow: scroll;
             border: 1px solid #ccc;
@@ -33,17 +33,20 @@
     <div id="target"></div>
 </div>
 <script>
-    let observer = new IntersectionObserver(() => {
-        if (!target.isIntersecting) {
+    let target = document.getElementById('target');
+    let info = document.getElementById('info');
+    let root = document.getElementById('root');
+
+    let observer = new IntersectionObserver((entries) => {
+        let entry = entries[0];
+        if (entry.isIntersecting) {
             info.textContent = "我出来了"
-            target.isIntersecting = true
         } else {
-            info.textContent = "向下滚动就能看到我"
-            target.isIntersecting = false
+            info.textContent = "我藏在页面底部，请向下滚动"
         }
     }, {
         root: root
-    })
+    });
 
     observer.observe(target)
 </script>

@@ -40,7 +40,9 @@ function deepClone(source) {
 }
 
 
-let newTo = deepClone(to);
-console.log(newTo);
+// let newTo = deepClone(to);
+// console.log(newTo);
+
+console.log(JSON.parse(JSON.stringify(to)));
 
 

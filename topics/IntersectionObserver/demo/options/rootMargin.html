@@ -25,24 +25,24 @@
 
         let entry = enties[0];
         if (entry.isIntersecting){
-            console.log('isIntersecting');
-            info.textContent = "开始加载图片！"
-            img.src = img.dataset.src
-            // img.src = img.dataset.src + '123'
-            // img.src = 'http://baidu.com'
+            info.textContent = "开始加载图片！";
+            img.src = img.dataset.src;
+            // img.src = 'http://baidu.com';
 
             //图片加载完成后解除观察
             img.onload = function(){
                 console.log('loaded');
                 observer.unobserve(img)
-            }
+            };
+
             img.onerror = function () {
                 console.log('img load fail');
             }
         }
     }, {
+        // rootMargin: "0px 0px"
         rootMargin: "200px 0px"
-    })
+    });
 
     observer.observe(img)
 </script>
