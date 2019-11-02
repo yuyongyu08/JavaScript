@@ -8,5 +8,4 @@ person.abilities = {
 }
 
 
-
 person.student.say();
