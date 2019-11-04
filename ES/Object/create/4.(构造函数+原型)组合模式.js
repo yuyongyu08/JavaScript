@@ -2,6 +2,7 @@
 /*
 * 【属性】放在构造函数中
 * 【方法】放在原型中
+*  TODO 最常使用的一种模式！！！
 * */
 
 function Person(name, age, job, colors) {
@@ -34,7 +35,3 @@ console.log(p1 instanceof Person); //false
 console.log(p2.constructor); // [Function: Object]
 console.log(p2.constructor === Object); // true
 console.log(p2 instanceof Person); //false
-
-/*
-* TODO 最常使用的一种模式！！！
-* */
