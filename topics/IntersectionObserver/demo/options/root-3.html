@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>root超出视窗</title>
     <style>
         #root {
             position: relative;
-            width: 200px;
+            width: 400px;
             height: calc(100vh + 500px);
             margin: 0 auto;
             overflow: scroll;
@@ -33,17 +33,20 @@
 </div>
 
 <script>
-    let observer = new IntersectionObserver(() => {
-        if (!target.isIntersecting) {
+    let target = document.getElementById('target');
+    let info = document.getElementById('info');
+    let root = document.getElementById('root');
+
+    let observer = new IntersectionObserver((entries) => {
+        let entry = entries[0];
+        if (entry.isIntersecting) {
             info.textContent = "我和 root 相交了，但你还是看不见"
-            target.isIntersecting = true
         } else {
             info.textContent = "慢慢向下滚动"
-            target.isIntersecting = false
         }
     }, {
         root: root
-    })
+    });
 
     observer.observe(target)
 </script>

@@ -9,9 +9,12 @@
         }
         #img1,#img2{
             position: absolute;
-            top: calc(100vh + 100px);
             min-height: 100px;
             min-width: 100px;
+        }
+
+        #img1{
+            top: calc(100vh + 100px);
         }
 
         #img2{
@@ -28,26 +31,27 @@
 
 <script>
     var observer = new IntersectionObserver((entries) => {
-        console.log(entries.length);
+        console.log('==========================', entries.length);
         entries.forEach((entry) => {
-            console.log('==========================');
-            showKeys(entry);
+            console.log(entry.target);
+            // showKeys(entry);
             if(entry.isIntersecting){
                 entry.target.src = entry.target.dataset.src;
-                // observer.unobserve(entry.target)
+                observer.unobserve(entry.target) //如果不取消，会反复执行
             }
         })
     });
 
     //同步增加观察，会合并执行回调
     observer.observe(document.getElementById('img1'));
-    observer.observe(document.getElementById('img2'));
+    // observer.observe(document.getElementById('img2'));
+
 
 
     //异步增加观察，不会合并执行回调函数
-    // setTimeout(() => {
-    //     observer.observe(document.getElementById('img2'));
-    // }, 2000)
+    setTimeout(() => {
+        observer.observe(document.getElementById('img2'));
+    }, 100);
 
 
     function showKeys(entry) {

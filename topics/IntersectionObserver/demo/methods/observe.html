@@ -47,8 +47,9 @@
 
 
     function mode2() {
-        Array.from(document.getElementsByTagName('img')).forEach((ele) => {
+        Array.from(document.getElementsByTagName('img')).forEach(ele => {
             var observer = new IntersectionObserver((entries) => {
+                console.log(entries.length);
                 entries.forEach((entry) => {
                     console.log(entry.isIntersecting, entry.target);
 
@@ -64,8 +65,8 @@
     }
 
 
-    // mode1()
-    mode2()
+    mode1()
+    // mode2()
 
 </script>
 </body>
