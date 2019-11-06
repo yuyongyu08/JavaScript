@@ -5,6 +5,6 @@ let person = {
     abilities: {}
 };
 
-person.student = new Student(person.abilities);
+person.student = new Student(person);
 
 module.exports = person;

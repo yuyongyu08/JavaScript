@@ -1,8 +1,7 @@
 export class Student{
-    constructor(person){
-        console.log('person:', person)
-
-        this.abilities = person.abilities;
+    constructor(abilities){
+        console.log('abilities:', abilities)
+        this.abilities = abilities;
     }
 
     say(){

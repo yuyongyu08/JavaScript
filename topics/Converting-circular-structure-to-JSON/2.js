@@ -6,8 +6,8 @@ let options = {
 };
 
 
-let isAJK = true;
+let isWB = true;
 
-options.Ultimate = isAJK ? new UltimateWB(options) : new UltimateAJK(options);
+options.Ultimate = isWB ? new UltimateWB(options) : new UltimateAJK(options);
 
 module.exports = options;
