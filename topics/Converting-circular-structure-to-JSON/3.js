@@ -7,4 +7,5 @@ let param = {
     name
 };
 
+//模拟this.setData({data})
 console.log(JSON.parse(JSON.stringify(param)));
