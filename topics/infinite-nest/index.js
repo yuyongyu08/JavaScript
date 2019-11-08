@@ -10,7 +10,7 @@ let to = {};
 
 to = from;
 
-// to.gender = Object.assign(from);
+to.gender = Object.assign(from);
 
 //解决方案
 // to.gender = {...from};
