@@ -10,11 +10,11 @@ let to = {};
 
 to = from;
 
-to.gender = Object.assign(from);
+// to.gender = Object.assign(from);
 
 //解决方案
 // to.gender = {...from};
-// to.gender = Object.assign({}, from);
+to.gender = Object.assign({}, from);
 // to.gender = deepClone(from);
 
 function deepClone(source) {
@@ -41,10 +41,10 @@ function deepClone(source) {
     return target
 }
 
+//
+// let newTo = deepClone(to);
+// console.log(newTo);
 
-let newTo = deepClone(to);
-console.log(newTo);
-
-// console.log(JSON.parse(JSON.stringify(to)));
+console.log(JSON.parse(JSON.stringify(to)));
 
 

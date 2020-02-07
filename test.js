@@ -1,5 +1,6 @@
-function test({name, age} = {name: 'yyy', age: 18}) {
-    console.log(name, age);
-}
+let b = '北京建国饭店'
 
-test({name:'yuyy'})
+let a = b.replace('建国', `<text>建国</text>`)
+
+console.log(b);
+console.log(a);
