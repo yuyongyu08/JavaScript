@@ -1,7 +1,9 @@
 let path = require('path')
-let Watcher = require('./v1/watch')
+// let Watcher = require('./v1/watch')
 // let Watcher = require('./v2/watch')
+let Watcher = require('./v3/watch')
 
+// 
 let dir = path.join(__dirname, './src/list')
 
 let options = {

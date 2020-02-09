@@ -9,9 +9,9 @@ class Watcher {
     start() {
         this.initFileMap()
         
-        setInterval(() => {
+        while (true) {
             this.readFile(this.options.path, this.comparer)
-        }, this.options.poll)
+        }
     }
 
     initFileMap() {
@@ -36,12 +36,27 @@ class Watcher {
         let originalTime = this.fileMap.get(filePath)
 
         if(originalTime !== time){
-            this.build()
+            this.fileMap.set(filePath, time)
+
+            console.log(originalTime, time);
+            
+            this.debounce(this.build, this.options.poll)
         }
     }
 
     build() {
         console.log('Starting build...');
+    }
+
+    debounce(cb, wait) {
+        let timer = null;
+    
+        return function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                cb.apply(this, arguments);
+            }, wait)
+        }
     }
 }
 
