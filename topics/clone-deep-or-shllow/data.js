@@ -9,7 +9,8 @@ let developer = {
     sayHi: function(){
         console.log(`I am ${this.title} developer`);
     },
-    start: new Date()
+    start: new Date(),
+    like: new Set('美食', '电影', '运动'),
 };
 
 module.exports = developer;

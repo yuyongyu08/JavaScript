@@ -16,6 +16,7 @@ function deepClone(source) {
             });
             break;
         default:
+            
             target = source;
     }
 
