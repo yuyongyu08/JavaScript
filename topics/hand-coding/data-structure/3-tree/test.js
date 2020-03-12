@@ -18,6 +18,12 @@ tree.insert(20);
 tree.insert(18);
 tree.insert(25);
 
-// tree.preOrderTerverse(item => console.log(item))
-// tree.inOrderTerverse(item => console.log(item))
-tree.postOrderTerverse(item => console.log(item))
+// tree.preOrderTerverse(node => console.log(node.key))
+// tree.inOrderTerverse(node => console.log(node.key))
+// tree.postOrderTerverse(node => console.log(node.key))
+
+console.log(tree.min());
+console.log(tree.max());
+
+console.log(tree.search(7));
+
