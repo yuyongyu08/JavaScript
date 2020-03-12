@@ -11,24 +11,60 @@ class BinarySearchTree {
         this.root = null
     }
 
-    inserNode(key, node) {
-        if (!node) {
-            node = new Node(null, key, null)
-        } else if (!!node && key < node.key) {
-            node.left = this.inserNode(key, node.left)
-        } else {
-            node.right = this.inserNode(key, node.right)
+    insert(key) {
+        function inserNode(key, node) {
+            if (!node) {
+                node = new Node(null, key, null)
+            } else if (!!node && key < node.key) {
+                node.left = inserNode(key, node.left)
+            } else {
+                node.right = inserNode(key, node.right)
+            }
+
+            return node
         }
 
-        return node
+        this.root = inserNode(key, this.root)
+    }
+    //先序
+    preOrderTerverse(cb) {
+        function preOrderTerverseNode(node, callback) {
+            if (node) {
+                cb(node.key)
+                preOrderTerverseNode(node.left, cb)
+                preOrderTerverseNode(node.right, cb)
+            }
+        }
+
+        preOrderTerverseNode(this.root, cb)
+    }
+    
+    //中序
+    inOrderTerverse(cb) {
+        function inOrderTerverseNode(node, callback) {
+            if (node) {
+                inOrderTerverseNode(node.left, cb)
+                cb(node.key)
+                inOrderTerverseNode(node.right, cb)
+            }
+        }
+
+        inOrderTerverseNode(this.root, cb)
     }
 
-    insert(key) {
-        this.root = this.inserNode(key, this.root)
-    }
 
-    print() {
-        console.log(this.root.toString());
+
+    //后序
+    postOrderTerverse(cb) {
+        function postOrderTerverseNode(node, callback) {
+            if (node) {
+                postOrderTerverseNode(node.left, cb)
+                postOrderTerverseNode(node.right, cb)
+                cb(node.key)
+            }
+        }
+
+        postOrderTerverseNode(this.root, cb)
     }
 }
 
