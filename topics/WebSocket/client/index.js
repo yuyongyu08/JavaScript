@@ -1,6 +1,6 @@
 var W3CWebSocket = require('websocket').w3cwebsocket;
 
-var client = new W3CWebSocket('ws://localhost:8081/', 'echo-protocol');
+var client = new W3CWebSocket('ws://localhost:8081/', 'my-protocol');
 
 client.onerror = function() {
     console.log('Connection Error');
@@ -27,8 +27,9 @@ client.onmessage = function(e) {
     if (typeof e.data === 'string' && e.data) {
         // console.log("Received: '" + e.data + "'");
         // TODO 
-        document.getElementById('cd').innerText = e.data
+        document.getElementById('cd').innerText = e.data 
     }else{
+        document.getElementById('cd').innerText = '已经结束了！'
         client.close()
     }
 };

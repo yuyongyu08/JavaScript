@@ -38,7 +38,7 @@ wsServer.on('request', function (request) {
         return;
     }
 
-    var connection = request.accept('echo-protocol', request.origin);
+    var connection = request.accept('my-protocol', request.origin);
     console.log((new Date()) + ' Connection accepted.');
     connection.on('message', function (message) {
         if (message.type === 'utf8') {
@@ -49,12 +49,12 @@ wsServer.on('request', function (request) {
             let timer = setInterval(()=> {
                 let t = getCountdown()
                 console.log('t:', t);
-                
-                if(!t){
-                    timer = null
-                }
+
                 connection.sendUTF(t);
-            
+
+                if(!t){
+                    clearInterval(timer)
+                }
             }, 1000)
 
         }
