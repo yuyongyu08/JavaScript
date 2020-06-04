@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Canvas</title>
     <style>
-        body{
+        body {
             text-align: center;
         }
 
-        canvas{
-            border: 1px solid;
+        canvas {
+            /* border: 1px solid; */
+        }
+
+        button {
+            position: absolute;
+            top: 600px;
+            left: 50%;
+            transform: translate(-34%, 0);
         }
     </style>
 </head>
-<body style="">
-    <h2>Hello Canvas!</h2>
+
+<body>
+    <button onclick="handleClick()">开始</button>
     <canvas width="1000" height="1000" id="canvas"></canvas>
 </body>
+
 </html>
