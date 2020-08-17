@@ -1,13 +1,11 @@
-let path = require('path')
+const path = require('path')
+
 // let Watcher = require('./v1/watch')
 // let Watcher = require('./v2/watch')
 let Watcher = require('./v3/watch')
 
-// 
-let dir = path.join(__dirname, './src/list')
-
 let options = {
-    path: dir,
+    path: path.join(__dirname, './src'),
     //默认为空，不监听的文件或者文件夹，支持正则匹配
     ignored: /node_modules/,
     //监听到变化发生后会等300ms再去执行，默认300ms
@@ -18,4 +16,5 @@ let options = {
 
 let watcher = new Watcher(options)
 
-watcher.start()
+module.exports = watcher
+

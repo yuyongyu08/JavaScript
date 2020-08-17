@@ -1,5 +1,5 @@
 // MM、hh、mm、ss都是从0开始记数
-let d = new Date(2020, 4, 28, 12);
+let d = new Date(2020, 8, 16, 12);
 let end_time = parseInt(Date.parse(d) / 1000); //终止时间
 
 

@@ -24,6 +24,8 @@ client.onclose = function() {
 };
 
 client.onmessage = function(e) {
+    console.log("Received message");
+
     if (typeof e.data === 'string' && e.data) {
         // console.log("Received: '" + e.data + "'");
         // TODO 

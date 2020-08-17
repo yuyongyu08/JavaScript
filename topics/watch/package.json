@@ -4,12 +4,21 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js && node dev-server.js",
+    "dev": "node build.js",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "watchpack": "^1.6.0"
+    "express": "^4.17.1",
+    "open": "^7.1.0",
+    "watchpack": "^1.6.0",
+    "websocket": "^1.0.31"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }

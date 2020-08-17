@@ -19,18 +19,14 @@ class Watcher {
         )
     }
 
-    start() {
+    start(cb) {
+        console.log('Starting watch...')
+
         this.wp.on("change", function(filePath, mtime, explanation) {
-            // filePath: the changed file
-            // mtime: last modified time for the changed file
-            // explanation: textual information how this change was detected
-
             console.log('Starting build...')
+            console.log(filePath, mtime, explanation);
+            cb && cb()
         });
-    }
-
-    build() {
-        console.log('Starting build...');
     }
 }
 
