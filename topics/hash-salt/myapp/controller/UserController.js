@@ -14,6 +14,12 @@ router.get('/delete', function (req, res, next) {
     res.send('deleted user!');
 });
 
+
+router.get('/deleteAll', function (req, res, next) {
+    userService.deleteAllUser()
+    res.send('deleted all user!');
+});
+
 router.get('/all', function (req, res, next) {
     userService.getAllUsers()
     res.send('get all users');

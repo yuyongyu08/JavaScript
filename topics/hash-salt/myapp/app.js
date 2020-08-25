@@ -1,13 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./controller/UserController');
+let indexRouter = require('./routes/index');
+let usersRouter = require('./controller/UserController');
+let open = require('open')
 
-var app = express();
+
+let app = express();
+const port = 3000
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,4 +42,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`)
+
+  open(`http://localhost:${port}`)
+})

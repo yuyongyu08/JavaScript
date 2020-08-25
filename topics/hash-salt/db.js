@@ -1,18 +1,13 @@
 const { MongoClient } = require("mongodb");
-const client = new MongoClient( "mongodb://127.0.0.1:27017/?poolSize=20&w=majority");
 
-async function dbConnect(cb) {
-    try {
-        await client.connect();
-        const database = client.db("admin-mvp");
-        const collection = database.collection("users");
-
-        cb && cb(collection)
-    } catch (e) {
-        console.dir(e)
-    } finally {
-        await client.close();
+class DBConnection{
+     constructor(){
+        this.client = new MongoClient( "mongodb://127.0.0.1:27017/?poolSize=20&w=majority");
+        this.client.connect().then(() => {
+            this.database = this.client.db("admin-mvp");
+            this.collection = this.database.collection("users");
+        })
     }
 }
 
-module.exports = dbConnect
+module.exports = new DBConnection()
