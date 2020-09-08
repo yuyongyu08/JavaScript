@@ -1,4 +1,22 @@
-;(function () {
+; (function () {
+    let os = function () {
+        const ua = navigator.userAgent,
+            isWindowsPhone = /(?:Windows Phone)/.test(ua),
+            isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+            isAndroid = /(?:Android)/.test(ua),
+            isFireFox = /(?:Firefox)/.test(ua),
+            isChrome = /(?:Chrome|CriOS)/.test(ua),
+            isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+            isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+            isPC = !isPhone && !isAndroid && !isSymbian;
+        return {
+            isTablet: isTablet,
+            isPhone: isPhone,
+            isAndroid: isAndroid,
+            isPC: isPC
+        };
+    }();
+
     function callback(id) {
         let el = document.getElementById(id);
 
@@ -9,7 +27,12 @@
     }
 
     let zone = document.getElementById('app');
-    zone.addEventListener('mousemove', callback.bind(null, 'normal'));
-    zone.addEventListener('mousemove', debounce(callback.bind(this, 'debounce'), 200));
-    zone.addEventListener('mousemove', throttle(callback.bind(this, 'throttle'), 200));
+
+    let eventType = 'mousemove';
+    if (os.isAndroid || os.isPhone) {
+        eventType = 'touchmove'
+    }
+    zone.addEventListener(eventType, callback.bind(null, 'normal'));
+    zone.addEventListener(eventType, debounce(callback.bind(this, 'debounce'), 200));
+    zone.addEventListener(eventType, throttle(callback.bind(this, 'throttle'), 200));
 })();
