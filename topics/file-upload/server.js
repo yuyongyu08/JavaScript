@@ -36,8 +36,10 @@ http.createServer((req, res) => {
         req.on('end', () => {
             const buffer = Buffer.concat(arr);
             const content = buffer.toString();
-            const result = decodeContent(content); //解析请求体中的文件数据
             const fileName = content.match(/(?<=filename=").*?(?=")/)[0];
+           
+            const result = decodeContent(content); //解析请求体中的文件数据
+            
             fileStream(fileName).write(result);
 
             res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
