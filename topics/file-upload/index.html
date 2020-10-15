@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件上传</title>
+</head>
+
+<body>
+    <h2>form形式：（浏览器对文件编码，后端需要解码）</h2>
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="file" value="请选择文件"><br />
+        <input type="submit">
+    </form>
+
+    <h2>Ajax+FormData形式：form的模拟</h2>
+    <div>
+        <input id="f1" type="file" />
+        <input type="button" value="文件上传" onclick="uploadFile('f1', '/upload', true)" />
+    </div>
+
+    <h2>Ajax形式：推荐</h2>
+    <div>
+        <input id="f2" type="file" />
+        <input type="button" value="文件上传" onclick="uploadFile('f2', '/upload-noencode')" />
+    </div>
+
+    <script>
+        function uploadFile(el_id, url, noFormData) {
+            const file = document.getElementById(el_id).files[0];
+
+            let fd = null;
+            if (noFormData) {
+                //通过FormData来实现from的转码功能
+                fd = new FormData();
+                fd.append('file', file);
+            }else{
+                fd = file
+                url += `?filename=${file.name}`
+            }
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText);
+                }
+            };
+            xhr.send(fd);
+        }
+    </script>
+</body>
+
+</html>
