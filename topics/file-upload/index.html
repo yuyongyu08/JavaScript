@@ -10,7 +10,7 @@
 
 <body>
     <h2>form形式：（浏览器对文件编码，后端需要解码）</h2>
-    <form method="POST" enctype="multipart/form-data" action="/upload">
+    <form method="POST" enctype="multipart/form-data" action="/v1/upload">
         <input type="file" name="file" value="请选择文件"><br />
         <input type="submit">
     </form>
@@ -18,13 +18,13 @@
     <h2>Ajax+FormData形式：form的模拟</h2>
     <div>
         <input id="f1" type="file" />
-        <input type="button" value="文件上传" onclick="uploadFile('f1', '/upload', true)" />
+        <input type="button" value="文件上传" onclick="uploadFile('f1', '/v1/upload', true)" />
     </div>
 
     <h2>Ajax形式：推荐</h2>
     <div>
         <input id="f2" type="file" />
-        <input type="button" value="文件上传" onclick="uploadFile('f2', '/upload-noencode')" />
+        <input type="button" value="文件上传" onclick="uploadFile('f2', '/v2/upload')" />
     </div>
 
     <script>
