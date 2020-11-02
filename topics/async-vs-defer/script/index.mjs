@@ -1,5 +1,5 @@
 export default (num) => {
-    console.log(`delay${num}s.js start execute`, new Date().getMilliseconds());
+    console.log(`delay${num}s.js start execute!`);
 
-    setTimeout(() => console.log(`delay${num}s.js setTimeout callback `, new Date().getMilliseconds()), num * 1000)
+    setTimeout(() => console.log(`delay${num}s.js setTimeout callback executed! `), num * 1000)
 }

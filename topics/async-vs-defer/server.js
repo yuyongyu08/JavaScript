@@ -16,8 +16,8 @@ function staticFile(request, response) {
         filePath = './html/async.html'
     }else if (filePath == './defer') {
         filePath = './html/defer.html'
-    } else if (filePath == './async-vs-defer') {
-        filePath = './html/async-vs-defer.html'
+    } else if (filePath == './async-and-defer') {
+        filePath = './html/async-and-defer.html'
     }
 
     filePath = path.resolve(__dirname, filePath)
