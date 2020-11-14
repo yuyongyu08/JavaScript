@@ -4,8 +4,8 @@ const { fileStream } = require('../utils');
 
 module.exports = function (req, res) {
     const reqUrl = url.parse(req.url)
-
     const fileName = reqUrl.query.split('=')[1];
+    
     req.pipe(fileStream(fileName)); //直接读取req的数据到文件
 
 
