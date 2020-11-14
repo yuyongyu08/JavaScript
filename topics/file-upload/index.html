@@ -9,34 +9,42 @@
 </head>
 
 <body>
-    <h2>form形式：（浏览器对文件编码，后端需要解码）</h2>
+    <h2>form形式</h2>
     <form method="POST" enctype="multipart/form-data" action="/v1/upload">
-        <input type="file" name="file" value="请选择文件"><br />
-        <input type="submit">
+        <input type="file" name="file" value="请选择文件">
+        <input type="submit" value="文件上传">
     </form>
 
     <h2>Ajax+FormData形式：form的模拟</h2>
     <div>
         <input id="f1" type="file" />
-        <input type="button" value="文件上传" onclick="uploadFile('f1', '/v1/upload', true)" />
+        <input type="button" value="文件上传" onclick="uploadFileByAjax('f1', '/v1/upload', true)" />
+    </div>
+
+
+    <h2>Fetch+FormData形式：form的模拟</h2>
+    <div>
+        <input id="f2" type="file" />
+        <input type="button" value="文件上传" onclick="uploadFileByFetch('f2', '/v1/upload')" />
     </div>
 
     <h2>Ajax形式：推荐</h2>
     <div>
-        <input id="f2" type="file" />
-        <input type="button" value="文件上传" onclick="uploadFile('f2', '/v2/upload')" />
+        <input id="f3" type="file" />
+        <input type="button" value="文件上传" onclick="uploadFileByAjax('f3', '/v2/upload')" />
     </div>
 
+
     <script>
-        function uploadFile(el_id, url, noFormData) {
+        function uploadFileByAjax(el_id, url, withFormData) {
             const file = document.getElementById(el_id).files[0];
 
             let fd = null;
-            if (noFormData) {
+            if (withFormData) {
                 //通过FormData来实现from的转码功能
                 fd = new FormData();
                 fd.append('file', file);
-            }else{
+            } else {
                 fd = file
                 url += `?filename=${file.name}`
             }
@@ -49,6 +57,48 @@
                 }
             };
             xhr.send(fd);
+        }
+
+        function uploadFileByFetch(el_id, url) {
+            let fd = new FormData();
+            const file = document.getElementById(el_id).files[0];
+
+            fd.append('file', file);
+
+            fetch(url, {
+                method: 'POST',
+                body: fd
+            }).then((response) => {
+                const reader = response.body.getReader();
+                const stream = new ReadableStream({
+                    start(controller) {
+                        // 下面的函数处理每个数据块
+                        function push() {
+                            // "done"是一个布尔型，"value"是一个Unit8Array
+                            reader.read().then(({ done, value }) => {
+                                // 判断是否还有可读的数据？
+                                if (done) {
+                                    // 告诉浏览器已经结束数据发送
+                                    controller.close();
+                                    return;
+                                }
+
+                                // 取得数据并将它通过controller发送给浏览器
+                                controller.enqueue(value);
+                                push();
+                            });
+                        };
+
+                        push();
+                    }
+                });
+
+                return new Response(stream, { headers: { "Content-Type": "text/html" } });
+            }).then(response => {
+                if (response.ok) {
+                    alert(response.body)
+                }
+            });
         }
     </script>
 </body>
