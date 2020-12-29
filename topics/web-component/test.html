@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Demo</title>
+</head>
+<body>
+  <div id="host">
+  </div>
+  <script>
+    const elem = document.querySelector('#host');
+    const shadowRoot = elem.attachShadow({mode: 'open'});
+    let div = document.createElement('div');
+    const id = 'app'
+    div.setAttribute('id', id);
+    shadowRoot.appendChild(div);
+
+    let script = document.createElement('script')
+    script.src = `./app.js`;
+    script.onload = function() {
+      let mountNode = document.getElementById('host').shadowRoot.getElementById(id)
+      componentRender(mountNode)
+    };
+
+    shadowRoot.appendChild(script)
+
+  </script>
+
+</body>
+</html>
