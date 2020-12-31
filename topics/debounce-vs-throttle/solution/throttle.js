@@ -3,16 +3,14 @@
    *
    * */
 function throttle(cb, wait) {
-    let timer = null;
+  let timer = null;
 
-    return function () {
-        if(!timer){
-            cb.apply(this, arguments);
-
-            timer = setTimeout(function () {
-                clearTimeout(timer);
-                timer = null;
-            }, wait)
-        }
+  return (...args) => {
+    if (!timer) {
+      timer = setTimeout(() => {
+        cb(...args);
+        timer = null;
+      }, wait)
     }
+  }
 }

@@ -3,12 +3,12 @@
    *
    * */
 function debounce(cb, wait) {
-    let timer = null;
+  let timer = null;
 
-    return function () {
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-            cb.apply(this, arguments);
-        }, wait)
-    }
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      cb(...args);
+    }, wait)
+  }
 }
