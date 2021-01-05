@@ -36,5 +36,5 @@ function quickSort(array = [], asc = true) {
 
 let arr = createRandomArray(11);
 console.log('原数组:', arr);
-console.log('升序： ', quickSort(arr));
-console.log('降序： ', quickSort(arr, false));
+console.log('升序： ', quickSort([...arr]));
+console.log('降序： ', quickSort([...arr], false));

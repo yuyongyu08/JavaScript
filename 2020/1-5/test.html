@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Demo</title>
+</head>
+<body>
+ <script>
+   let asc = true;
+   function sort(){
+      asc = !asc;
+      let trs = document.getElementsByTagName('tr');
+      //1.获得所有tr
+      //2.将集合转成数组进行排序
+      //3.排序时用asc来做排序标准，日期用new Date()转化为毫秒数
+      //4.回填tbody
+   }
+ </script>
+  <!-- 以下表格，点击 `#data .date` 后使表格按日期排序，当前是正序则改为倒序，当前是倒序则改为正序。 -->
+  <table id="data">
+      <thead>
+          <tr>
+              <th class="date" onclick="sort">日期</th>
+              <th class="total">总次数</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>2017年10月23日</td>
+              <td>68,112</td>
+          </tr>
+          <tr>
+              <td>2017年8月6日</td>
+              <td>68,020</td>
+          </tr>
+          <tr>
+              <td>2017年11月11日</td>
+              <td>69,433</td>
+          </tr>
+          <tr>
+              <td>2016年5月12日</td>
+              <td>69,699</td>
+          </tr>
+          <tr>
+              <td>2017年1月18日</td>
+              <td>42,565</td>
+          </tr>
+      </tbody>
+  </table>
+
+</body>
+</html>
