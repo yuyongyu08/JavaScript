@@ -5,16 +5,18 @@
  */
 function calc(n) {
   let result = []
-  if (n < 3) return [n];
 
-  for (let index = 2; index < n; index++) {
+  for (let index = 2; index <= n; index++) {
     let rest = n % index;
-    result.push(index)
 
     if (rest == 0) {
-      result.push(...calc(n/index))
+      result.push(index)
+      result.push(...calc(n / index))
       break
-    }else{
+    } else {
+      if (n > index) {
+        continue
+      }
       result.push(n)
       break
     }
@@ -24,7 +26,7 @@ function calc(n) {
 }
 
 
-// console.log(calc(2));// [2]
+console.log(calc(2));// [2]
 console.log(calc(8));// [2, 2, 2]
 console.log(calc(24));// [2, 2, 2, 3]
 console.log(calc(30));// [2, 3, 5]
