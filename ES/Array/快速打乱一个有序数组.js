@@ -1,42 +1,25 @@
 let arr = [];
 
-// arr = arr.map(function (value, index) {
-//     return value++;
-// });
+for (let index = 0; index < 20; index++) {
+  arr[index] = index
+}
+console.log(arr);
 
-//为什么？？？
-
-
-for (let i = 1; i <= 10; i++){
-    arr.push(i)
+//sort
+function mess1(arr){
+  arr.sort(() => Math.random() > 0.5)
+  return arr
 }
 
+console.log(mess1(JSON.parse(JSON.stringify(arr))));
 
-function messArray(array) {
-    array.forEach(function (value, index, arr) {
-        let random = Math.floor(Math.random() * 10);
-        console.log(random);
-
-        let temp = arr[random];
-        arr[random] = arr[index];
-        arr[index] = temp;
-    });
-
-    return array
+//洗牌算法：
+function mess2(arr){
+  for (let index = arr.length -1 ; index > 0; index--) {
+    let random = Math.floor(Math.random() * index);
+    [arr[index], arr[random]] = [arr[random], arr[index]]
+  }
+  return arr
 }
 
-
-function messArray1(array) {
-
-    if (!Array.prototype.shuffle) {
-        Array.prototype.shuffle = function() {
-            for(var j, x, i = this.length; i; j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
-            return this;
-        };
-    }
-    return array.shuffle();
-}
-
-
-
-console.log(messArray1(arr));
+console.log(mess2(JSON.parse(JSON.stringify(arr))));
