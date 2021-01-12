@@ -1,24 +1,36 @@
-let arr = [1, 5, 2, 3, 4, 5];
+let arr = [
+  { W: 2, H: 10 },
+  { W: 3, H: 20 },
+  { W: 4, H: 30 },
+];
 
-console.log(arr.map(function (value, index, array) {
-    return value * 2
-})); // [ 2, 10, 4, 6, 8, 10 ]
+let obj = {
+  getArea(w, h) {
+    return w * h
+  }
+}
 
-console.log(arr.map(item => item * 2));// [ 2, 10, 4, 6, 8, 10 ]
+console.log(arr.map(item => item.W * item.H));
+console.log(arr.map(function (item, index, array) {
+  return this.getArea(item.W, item.H)
+}, obj));
+console.log(arr);
 
+Array.prototype.myMap = function (callback, context) {
+  let temp = []
+  for (let index = 0; index < this.length; index++) {
+    temp.push(callback.call(context, this[index], index, this))
+  }
+  return temp
+}
 
-console.log(arr.map(function (value, index, array) {
-    return 2
-})); // [ 2, 2, 2, 2, 2, 2 ]
-
-console.log(arr.map(item => 2)); // [ 2, 2, 2, 2, 2, 2 ]
-
-
-//不改变原数组
-console.log(arr); // [ 1, 5, 2, 3, 4, 5 ]
-
-//在转化数组方面，和map有同样作用的还有Array.from()
-
-console.log(Array.from(arr, function (x) {
-    return x * 2
-})); //[ 2, 10, 4, 6, 8, 10 ]
+arr = [
+  { W: 2, H: 10 },
+  { W: 3, H: 20 },
+  { W: 4, H: 30 },
+];
+console.log(arr.myMap(item => item.W * item.H));
+console.log(arr.myMap(function (item, index, array) {
+  return this.getArea(item.W, item.H)
+}, obj));
+console.log(arr);
