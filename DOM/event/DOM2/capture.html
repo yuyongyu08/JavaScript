@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件捕获</title>
+</head>
+
+<body>
+
+    <fieldset id="outer">
+        this is outer
+
+        <fieldset id="inner">
+            inner: click me
+        </fieldset>
+    </fieldset>
+
+    <script>
+        document.getElementById('inner').addEventListener('click', function (event) {
+            // event.stopPropagation(, event.target === event.currentTarget); //组织冒泡
+            console.log('inner', event.type, event.target === event.currentTarget);
+        }, true);
+
+        document.getElementById('outer').addEventListener('click', function (event) {
+            console.log('outer', event.type, event.target === event.currentTarget);
+        }, true);
+
+        document.body.addEventListener('click', function (event) {
+            console.log('body', event.type, event.target === event.currentTarget);
+        }, true);
+
+        document.documentElement.addEventListener('click', function (event) {
+            console.log('html', event.type, event.target === event.currentTarget);
+        }, true);
+
+        document.addEventListener('click', function (event) {
+            console.log('document', event.type, event.target === event.currentTarget);
+        }, true);
+
+        window.addEventListener('click', function (event) {
+            console.log('window', event.type, event.target === event.currentTarget);
+        }, true);
+    </script>
+</body>
+
+</html>
