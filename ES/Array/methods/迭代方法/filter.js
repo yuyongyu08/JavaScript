@@ -1,4 +1,5 @@
 /**
+ * filter(callback(value, item, array), thisArg)
  * 始终返回数组；不改变原数组
 */
 let arr = [1, 2, 3, 4, 5];
@@ -23,7 +24,6 @@ Array.prototype.myFilter = function(callback, context){
   }
   return temp;
 }
-arr = [1, 2, 3, 4, 5];
 
 console.log(arr.myFilter(item => item > 3)); //[ 4, 5 ]
 console.log(arr.myFilter(function (item) { 

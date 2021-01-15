@@ -1,50 +1,48 @@
 /*
-* reduce(callback(initValue, currentValue, currentInde, array), initValue)
+* reduce(callback(pre, cur, currentIndex, array), initialValue)
 *
-* 不改变原数组
+* 对数组进行归并；不改变原数组
 **/
 
-
-
-
-
-let arr = [1, 2, 3, 4, 5];
-
-
-console.log(arr.reduce(function (previousValue, currentValue, currentIndex, array) {
-    return previousValue + currentValue;
-})); // 15
-
-console.log(arr.reduce((previousValue, currentValue) => previousValue + currentValue)); // 15
-
-console.log(arr); // [ 1, 2, 3, 4, 5 ]
-
-
-
-console.log(arr.reduce(function (previousValue, currentValue, currentIndex, array) {
-    return previousValue + currentValue;
-}, 20)); // 35
-
-console.log(arr.reduce((previousValue, currentValue) => previousValue + currentValue, 20)); // 35
-
-
-console.log(arr); // [ 1, 2, 3, 4, 5 ]
-
-
-
-let a = [
-    {
-        text: '招商',
-        value: 0.3
-    },
-    {
-        text: '民生',
-        value: 0.1
-    },
-    {
-        text: '建行',
-        value: 0.5
-    },
+let arr = [
+  {
+    text: '招商',
+    value: 1
+  },
+  {
+    text: '民生',
+    value: 2
+  },
+  {
+    text: '建行',
+    value: 3
+  },
 ];
 
-console.log(a.reduce((init, currentValue, currentIndex, arr)=> init + currentValue.value, 0)); //0.9
+console.log(arr.reduce(function (pre, cur, index, array) {
+  return (pre.value ? pre.value : pre) + cur.value
+})); // 15
+console.log(arr.reduce((pre, cur, index, array) => pre + cur.value, 10)); // 15
+console.log(arr); // [ 1, 2, 3, 4, 5 ]
+
+//有初试值，则pre为初始值；否则pre为第一个元素，index始终代表当前下标
+Array.prototype.myReduce = function (callback, initialValue) {
+  let result 
+  if(initialValue){
+    result = initialValue
+  }else{
+    result = this.shift()
+  }
+  this.forEach((item, index, array) => {
+    result = callback(result, item, index, array)
+  });
+  return result;
+}
+
+console.log(arr.reduce(function (pre, cur, index, array) {
+  return (pre.value ? pre.value : pre) + cur.value
+})); // 15
+console.log(arr.reduce((pre, cur, index, array) => pre + cur.value, 10)); // 15
+console.log(arr); // [ 1, 2, 3, 4, 5 ]
+
+

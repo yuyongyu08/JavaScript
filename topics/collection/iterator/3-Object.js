@@ -11,7 +11,7 @@ let myObject = {
  * TODO 遍历key，自有属性+原型属性(toString)
  */
 for (let item in myObject) {
-  console.log('for...in:', myObject[item]);
+  console.log('for...in:', item);
 }
 
 

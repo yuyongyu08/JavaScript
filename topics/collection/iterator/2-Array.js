@@ -11,16 +11,18 @@ for (let i = 0, length = myArray.length; i < length; i++) {
 
 /**
  * 2.for...in.. 【不推荐！】
+ * 遍历的是下标
  * 缺点：TODO 遍历数字键名，会遍历手动添加的其他键，甚至包括原型链上的键
  */
+myArray.name = 'new'
 for (let i in myArray){
-    console.log('for...in:', myArray[i]);
+    console.log('for...in:', i);
 }
 
 
 /**
  * 3.for...of...  【推荐】
- *
+ * 遍历的是元素
  */
 for (let i of myArray) {
     console.log('for...of:', i);

@@ -1,3 +1,8 @@
+/**
+ * map(callback(value, item, array), thisArg)
+ * 加工数组元素；不改变原数组
+*/
+
 let arr = [
   { W: 2, H: 10 },
   { W: 3, H: 20 },
@@ -24,11 +29,6 @@ Array.prototype.myMap = function (callback, context) {
   return temp
 }
 
-arr = [
-  { W: 2, H: 10 },
-  { W: 3, H: 20 },
-  { W: 4, H: 30 },
-];
 console.log(arr.myMap(item => item.W * item.H));
 console.log(arr.myMap(function (item, index, array) {
   return this.getArea(item.W, item.H)
