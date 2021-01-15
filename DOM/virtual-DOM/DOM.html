@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>操作真实DOM</title>
     <style>
-        li:nth-of-type(2){
+        li:nth-of-type(2) {
             color: red;
         }
     </style>
 </head>
+
 <body>
-<button onclick="deleteNode(1)">删除第1个节点</button>
-<div id="app"></div>
+    <button onclick="deleteNode(1)">删除第1个节点</button>
+    <div id="app"></div>
 
-<script>
-    let arr = [];
+    <script>
+        let arr = [];
 
-    for (let i = 0; i < 10000; i++){
-        arr.push(`第${i}个节点`)
-    }
+        for (let i = 0; i < 10000; i++) {
+            arr.push(`第${i}个节点`)
+        }
 
 
-    function deleteNode(index) {
-        arr.splice(index, 1);
+        function deleteNode(index) {
+            let startTime = Date.now()
+            arr.splice(index, 1);
+            renderList(arr);
+            let endTime = Date.now()
+            console.log(endTime - startTime);
+        }
+
+        function renderList(array) {
+            let mount = document.getElementById('app');
+            mount.firstChild ? mount.removeChild(mount.firstChild) : '';
+            let ul = document.createElement('ul');
+            array.forEach(function (value, index) {
+                let text = document.createTextNode(value);
+                let li = document.createElement('li');
+                li.addEventListener('click', deleteNode.bind(null, index))
+                li.appendChild(text);
+                ul.appendChild(li);
+            });
+            document.getElementById('app').appendChild(ul);
+        }
 
         renderList(arr);
-    }
 
-    function renderList(array) {
-        let mount = document.getElementById('app');
-        mount.firstChild ? mount.removeChild(mount.firstChild) : '';
-        let ul = document.createElement('ul');
-        array.forEach(function (value, index) {
-            let text = document.createTextNode(value);
-            let li = document.createElement('li');
-            li.appendChild(text);
-            ul.appendChild(li);
-        });
-        document.getElementById('app').appendChild(ul);
-    }
-
-    renderList(arr);
-
-</script>
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>DOM0</title>
+</head>
+<body>
+    <fieldset id="outer">
+        this is outer
+
+        <fieldset id="inner">
+            inner: click me
+        </fieldset>
+    </fieldset>
+    <script>
+        let inner = document.getElementById('inner');
+        inner.onclick = function(event){
+            console.log('inner', event.type, event.target === event.currentTarget);
+        }
+
+        let outer = document.getElementById('outer');
+        outer.onclick = function(event){
+            console.log('outer', event.type, event.target === event.currentTarget);
+        }
+
+        /**
+         * DOM0：只有这一种事件绑定方式
+         * 默认事件执行阶段：冒泡
+        */
+    </script>
+</body>
+</html>
