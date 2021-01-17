@@ -47,7 +47,7 @@
     <!-- 容器 -->
     <div class="swiper-container">
       <!-- 滑块 -->
-     <div class="swiper-item" style="background: #000">1</div>
+      <div class="swiper-item" style="background: #000">1</div>
       <div class="swiper-item" style="background: #4269eb">2</div>
       <div class="swiper-item" style="background: #247902">3</div>
     </div>
@@ -66,21 +66,20 @@
       let colors = ['#09aff3', '#4269eb', '#247902']
       let li = document.createElement('div');
       li.className = 'swiper-item';
-      li.style.backgroundColor = `${colors[data-1]}`;
+      li.style.backgroundColor = `${colors[data - 1]}`;
       li.textContent = data
       return li
     }
 
-    function renderContainer(container,list){
+    function renderContainer(container, list) {
       container.innerHTML = ''
       list.map(item => getItemTemplate(item)).forEach(item => container.appendChild(item))
     }
 
     let items = [1, 2, 3]
-    let first = items[0];
-    let last = items[items.length - 1];
-    items.push(first)
-    items.unshift(last)
+    items = items.concat(items)
+    items.unshift(items.pop())
+
 
     renderContainer(containerEl, items)
 
@@ -136,7 +135,7 @@
 
         items.unshift(items.pop())
       }
-      renderContainer(containerEl, items)
+      // renderContainer(containerEl, items)
 
 
       left = 0 - itemWidth * index;
