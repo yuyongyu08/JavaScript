@@ -8,6 +8,4 @@ module.exports = function (left, right) {
 
         leftValue = Object.getPrototypeOf(leftValue);
     }
-
-    // return Object.getPrototypeOf(left) === right.prototype
 }
