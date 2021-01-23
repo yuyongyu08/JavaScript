@@ -18,7 +18,7 @@
 
     <script>
         document.getElementById('inner').addEventListener('click', function (event) {
-            // event.stopPropagation(, event.target === event.currentTarget); //组织冒泡
+            // event.stopPropagation(, event.target === event.currentTarget); //阻止冒泡
             console.log('inner', event.type, event.target === event.currentTarget);
         });
 
