@@ -8,7 +8,7 @@ class MyStack {
         this.items.push(item);
     }
 
-    pop(item) {
+    pop() {
         return this.items.pop(); 
     }
 

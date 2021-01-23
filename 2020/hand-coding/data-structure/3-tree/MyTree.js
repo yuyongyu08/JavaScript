@@ -1,5 +1,5 @@
 class Node {
-    constructor(left, key, right) {
+    constructor(key, left, right) {
         this.left = left
         this.key = key
         this.right = right
@@ -14,7 +14,7 @@ class BinarySearchTree {
     insert(key) {
         function inserNode(key, node) {
             if (!node) {
-                node = new Node(null, key, null)
+                node = new Node(key, null, null)
             } else if (!!node && key < node.key) {
                 node.left = inserNode(key, node.left)
             } else {
@@ -82,11 +82,11 @@ class BinarySearchTree {
         return maxNode(this.root)
     }
 
-    search(key){
+    search(key) {
         const searchNode = node => {
-            if(node.key === key){
+            if (node.key === key) {
                 return node
-            }else {
+            } else {
                 return searchNode(key < node.key ? node.left : node.right)
             }
         }

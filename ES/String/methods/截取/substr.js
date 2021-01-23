@@ -1,5 +1,7 @@
 /**
  * 从起始索引号提取字符串中「指定数目」的字符。
+ * from
+ * length
  */
 
 let string = 'hello world';
