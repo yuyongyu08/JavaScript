@@ -19,20 +19,18 @@
 
     .swiper .swiper-container {
       position: relative;
-      /* 为啥要设置-300px呢，因为我想让他默认在第二个滑块的位置，一会会给大家演示 */
+      width: 300px;
       left: -300px;
-      /* 让容器尽可能的宽，这样才能容纳更多的滑块 */
-      width: 10000%;
-      /* 让内部滑块可以排成一行 */
-      display: flex;
+      overflow-x: visible;
       background: red;
       padding: 15px 0;
+      white-space: nowrap;
       /* transition: left 0.2s ease-in-out; */
     }
 
     .swiper .swiper-container .swiper-item {
-      /* 宽度设置1%会按照外层视图的宽度来铺满 */
-      width: 1%;
+      display: inline-block;
+      width: 300px;
       height: 300px;
       text-align: center;
       font-size: 40px;
@@ -76,28 +74,25 @@
       list.map(item => getItemTemplate(item)).forEach(item => container.appendChild(item))
     }
 
+    //初始化滑块
     let items = [1, 2, 3]
     items = items.concat(items)
     items.unshift(items.pop())
-
-
     renderContainer(containerEl, items)
 
-    // 获取到滑块的宽度
     const itemWidth = 300;
-
-
     let index = 0;          // 记录当前滑块的顺序（从0开始）
     let state = 0;  		// 鼠标默认状态
-    let oldEvent = null;    // 用来记录鼠标上次的位置
     let left = 0 - itemWidth;
     containerEl.style.left = left + 'px';
 
     let startEvent = null;  // 用来记录鼠标按下时候的位置（最初位置）
+    let finalEvent = null;    // 用来记录鼠标上次的位置
+
 
     containerEl.addEventListener('mousedown', (event) => {
       state = 1;  // 设置为1表示按下了鼠标
-      startEvent = oldEvent = event;   // 当鼠标按下时候记录初始位置
+      startEvent = finalEvent = event;   // 当鼠标按下时候记录初始位置
       console.log('鼠标按下了');
     });
 
@@ -105,16 +100,15 @@
     containerEl.addEventListener('mousemove', (event) => {
       if (state != 1) return; // 只有当state == 1时候才允许执行该事件
 
-      // 用当前鼠标的位置来和上次鼠标的位置作比较
-      // 如果当前鼠标的pageX小于上次鼠标的pageX，那就表示鼠标在向左拖动，就需要把容器left值减去鼠标移动的距离
-      if (event.pageX < oldEvent.pageX) {
-        left -= oldEvent.pageX - event.pageX;
+      if (event.pageX < finalEvent.pageX) {
+        left -= finalEvent.pageX - event.pageX;
       }
       else {
-        left += event.pageX - oldEvent.pageX;
+        left += event.pageX - finalEvent.pageX;
       }
-      // 完事之后记得把当前鼠标的位置赋值给oldEvent
-      oldEvent = event;
+      // 完事之后记得把当前鼠标的位置赋值给finalEvent
+      finalEvent = event;
+
       // 最后再把left赋值给容器
       containerEl.style.left = left + 'px';
       console.log('鼠标移动了');
@@ -123,15 +117,15 @@
     containerEl.addEventListener('mouseup', (event) => {
       state = 0;  // 恢复默认状态
 
-      // 鼠标抬起时候，和按下的坐标作比对，用来判断是向左滑动还是向右滑动
-      // 向左滑动那么就是要显示下一个滑块，所以index要加1
-      if (event.pageX < startEvent.pageX) {
-        index++;
+      let scrollMoreHalf = Math.abs(event.pageX - startEvent.pageX) > itemWidth / 2
 
+      console.log(scrollMoreHalf);
+      if (event.pageX < startEvent.pageX) { //左滑
+        scrollMoreHalf && index++;
         items.push(items.shift())
       }
       else {
-        index--;
+        scrollMoreHalf && index--;
 
         items.unshift(items.pop())
       }

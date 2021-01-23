@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+</head>
+
+<body>
+    <ul id='list' style="border: 1px solid rgb(187, 17, 17);padding: 30px;">
+        <li>click me</li>
+        <li>click me again</li>
+    </ul>
+
+    <input id='input' placeholder="获取焦点试试">
+
+    <script>
+        // li的事件委托到body
+        document.body.addEventListener('click', function(event){
+            if(event.target !== this && event.target.nodeName == 'LI') alert(event.target.innerText)
+        })
+
+        //动态添加的节点自动享受事件委托
+        let li = document.createElement('li');
+        li.innerText = 'click me again and again'
+        document.getElementById('list').appendChild(li)
+
+        //中间dom中断冒泡，导致事件委托丢失
+        document.getElementById('list').addEventListener('click', function(event){
+            // event.stopPropagation(); 
+        })
+
+
+
+
+
+
+        document.body.addEventListener('focus', function(event){
+            alert('body代理focus事件')
+        })
+        
+        // document.body.addEventListener('myFoucs', function(event){
+        //     event.stopPropagation()
+        //     alert('body代理focus事件')
+        // })
+
+        // document.getElementById('input').addEventListener('focus', function(e){
+        //     document.body.myFoucs();
+        // })
+
+    </script>
+</body>
+
+</html>
