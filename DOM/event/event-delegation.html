@@ -27,28 +27,27 @@
         li.innerText = 'click me again and again'
         document.getElementById('list').appendChild(li)
 
-        //中间dom中断冒泡，导致事件委托丢失
+        //中间dom节点阻止冒泡，导致事件委托丢失
         document.getElementById('list').addEventListener('click', function(event){
             // event.stopPropagation(); 
         })
 
 
-
-
-
-
+        //focus不能冒泡，所以无法做事件委托
         document.body.addEventListener('focus', function(event){
-            alert('body代理focus事件')
+            console.log('body代理【focus】事件')
         })
         
-        // document.body.addEventListener('myFoucs', function(event){
-        //     event.stopPropagation()
-        //     alert('body代理focus事件')
-        // })
+        //可以通过focusin来实现获取焦点的事件委托
+        document.body.addEventListener('focusin', function(event){
+            console.log('body代理【focusin】事件')
+        })
 
-        // document.getElementById('input').addEventListener('focus', function(e){
-        //     document.body.myFoucs();
-        // })
+        /**
+         * 总结:
+         * 1.blur/focus，就会想到和它们很像的两个事件，那就是 focusout/focusin。它们和前者的主要区别就是 focusout/focusin 事件会冒泡
+         * 2.mouseleave/mouseenter 事件非常相似的事件是 mouseout/mouseover，它们的区别就是 mouseout/mouseover 会触发冒泡
+        */
 
     </script>
 </body>

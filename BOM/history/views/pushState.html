@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+    <title>页面栈</title>
+</head>
+
+<body>
+    <ul id='trigger'>
+        <li><a>/list</a></li>
+        <li><a>/detail</a></li>
+        <li><a>/about</a></li>
+    </ul>
+
+    <button onclick="javascript:history.back()">后退</button>
+    <button onclick="javascript:history.forward()">前进</button>
+    <button onclick="replace('/replace')">replaceState</button>
+
+    <p>
+        history.length: <span id='length'></span>
+    </p>
+
+    <fieldset>
+        <legend>pushState</legend>
+        当前指针在history栈顶部时执行pushState，会增加history栈大小；若当前指针不在栈顶则会在当前指针所在位置添加，新添加项变为栈顶（之前的项清除）
+    </fieldset>
+    <fieldset>
+        <legend>replaceState</legend>
+        替换浏览器历史堆栈的当前历史记录为设定的url，不会改动浏览器历史堆栈的当前指针和栈长度
+    </fieldset>
+
+    <script>
+        printHistoryLength(history.length);
+
+        window.addEventListener('popstate', function (e) {
+            console.log(e.state, location.href);
+            printHistoryLength(history.length);
+        })
+
+        const links = document.querySelectorAll('a');
+        const linkList = Array.prototype.slice.call(links);
+        linkList.forEach(item => {
+            item.addEventListener('click', function (e) {
+                const href = e.target.innerHTML;
+                push(href)
+            })
+        });
+
+        function push(path) {
+            history.pushState({ url: path }, '', path);
+            printHistoryLength(history.length);
+        }
+
+        function replace(path) {
+            history.replaceState({ url: path }, '', path);
+            printHistoryLength(history.length);
+        }
+
+        function printHistoryLength(length) {
+            document.getElementById('length').innerText = length
+        }
+
+    </script>
+</body>
+
+</html>
