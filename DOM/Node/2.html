@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Node</title>
+</head>
+
+<body>
+    <ul style="list-style: none;" id="list">
+        <li id='1'>1</li>
+        <li id='2'>2</li>
+        <li id='3'>3</li>
+        <li id='4'>4</li>
+    </ul>
+
+    <script>
+        function createLi(id) {
+            let li = document.createElement('li');
+            li.setAttribute('id', id)
+            li.innerText = id
+            return li
+        }
+
+        const list = document.getElementById('list');
+
+        //appendChild
+        const li5 = createLi(5)
+        list.appendChild(li5)
+
+        //insertBefore
+        const li6 = createLi(6)
+        list.insertBefore(li6, li5)
+
+        //replaceChild
+        list.replaceChild(createLi(7), document.getElementById('1'))
+
+        //removeChild
+        list.removeChild(list.childNodes[3])
+
+
+
+    </script>
+</body>
+
+</html>
