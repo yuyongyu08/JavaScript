@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Node</title>
+</head>
+
+<body>
+    <ul style="list-style: none;" id="list">
+        <li id='1'>1</li>
+        <li id='2'>2</li>
+        <li id='3'>3</li>
+        <li id='4'>4</li>
+    </ul>
+
+    <script>
+        const list = document.getElementById('list');
+
+        //cloneNode
+        const deepList = list.cloneNode(true);//深拷贝：复制当前节点及其整个DOM树
+        document.body.appendChild(deepList)
+
+        const shallowList = list.cloneNode(false); //浅拷贝：只复制当前节点
+        document.body.appendChild(shallowList)
+
+
+        //normalize :将当前节点和它的后代节点”规范化“,"规范化"后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。
+        let wrapper = document.createElement("div");
+        wrapper.appendChild(document.createTextNode("Part 1 "));
+        wrapper.appendChild(document.createTextNode("Part 2 "));
+
+        // 规范化之前
+        console.log('wrapper.childNodes.length:', wrapper.childNodes.length);
+        console.log('wrapper.childNodes[0].textContent === "Part 1 ": ', wrapper.childNodes[0].textContent === "Part 1 ");
+        console.log('wrapper.childNodes[1].textContent === "Part 2 ":', wrapper.childNodes[1].textContent === "Part 2 ");
+
+        wrapper.normalize();
+        // 规范化之后
+        console.log('wrapper.childNodes.length:', wrapper.childNodes.length);
+        console.log('wrapper.childNodes[0].textContent === "Part 1 Part 2 ":', wrapper.childNodes[0].textContent === "Part 1 Part 2 ");
+
+
+    </script>
+</body>
+
+</html>
