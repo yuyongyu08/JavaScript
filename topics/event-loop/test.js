@@ -1,27 +1,18 @@
-function say(msg){
-    console.log(msg);
+async function f1() {
+    return new Promise((resovle) => {
+        setTimeout(() => {
+            resovle(123)
+        })
+    })
 }
 
-say('hello');
 
-setTimeout(() => {
-    say('?')
-}, 5000)
+(async function () {
+    let p = await f1();
+    console.log(p);
+})();
 
-setTimeout(() => {
-    say('~')
-})
-
-setTimeout(() => {
-    say('!')
-}, 3000)
-
-
-say('world');
-
-
-// hello
-// world
-// ~
-// !
-// ?
+(async function () {
+    let p = f1();
+    p.then(console.log)
+})();

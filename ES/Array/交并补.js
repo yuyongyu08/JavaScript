@@ -10,6 +10,8 @@ console.log(intersect);
 //并
 union = [...new Set([...arr1, ...arr2])];
 // union = [...new Set(arr1.concat(arr2))];
+// union = Array.from(new Set(arr1.concat(arr2)));
+
 console.log(union);
 
 //补
