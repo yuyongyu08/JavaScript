@@ -5,8 +5,9 @@ const asyncTasks = [
 ];
 
 function run(arr, cb) {
-   //todo
+    //todo
+   
 }
 
-const callback = res => console.log(res)
+const callback = res => console.table(res)
 run(asyncTasks, callback) // 3秒后输出 [1,2,3]

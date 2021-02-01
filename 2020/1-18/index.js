@@ -10,12 +10,11 @@ function run(arr, cb) {
 }
 
 function run1(arr, cb) {
-    let result = [], count = 0;
+    let result = new Array(arr.length).fill(false);
     arr.forEach((item, index) => {
         item((args) => {
-            count++;
             result[index] = args;
-            if (count == arr.length) {
+            if (!result.includes(false)) {
                 cb && cb(result)
             }
         })
@@ -23,6 +22,6 @@ function run1(arr, cb) {
 }
 
 
-const callback = res => console.log(res)
+const callback = res => console.table(res)
 run(asyncTasks, callback) // 3秒后输出 [1,2,3]
 run1(asyncTasks, callback) // 3s => [1,2,3]
