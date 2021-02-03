@@ -1,13 +1,13 @@
-var x = 1;
-{
-    function xx() {
-        console.log('ss', this.x)
+var beatBox = {
+    sample: "gong",
+    play: function (sequence) {
+        console.log('play:', this);
+        sequence.forEach(function (note) {
+            console.log('forEach: ', this);
+
+            console.log("Play " + this.sample +
+                " for note ", note);
+        });
     }
-}
-xx()
-
-
-var x = 1;
-(function xx() {
-    console.log('ss', this.x)
-})();
+};
+beatBox.play(['A', 'C', 'F']);
