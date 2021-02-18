@@ -15,10 +15,12 @@ class BinarySearchTree {
         function inserNode(key, node) {
             if (!node) {
                 node = new Node(key, null, null)
-            } else if (!!node && key < node.key) {
-                node.left = inserNode(key, node.left)
             } else {
-                node.right = inserNode(key, node.right)
+                if (key < node.key) {
+                    node.left = inserNode(key, node.left)
+                } else if (key > node.key) {
+                    node.right = inserNode(key, node.right)
+                }
             }
 
             return node
