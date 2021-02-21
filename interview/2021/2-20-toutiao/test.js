@@ -13,4 +13,13 @@ function formatArr(arr) {
     return Object.values(obj).reduce((a,b) => a.concat(b), [])
 }
 
-console.log(formatArr(['A', 'A', 'A', 'C', 'B', 'B', 'A', 'C', 'B']))
+function formatArr1(arr) {
+    function getSubArr(type){
+        return arr.filter(item => item === type)
+    }
+
+    return getSubArr('B').concat(getSubArr('A'), getSubArr('C'))
+}
+
+// console.log(formatArr(['A', 'A', 'A', 'C', 'B', 'B', 'A', 'C', 'B']))
+console.log(formatArr1(['A', 'A', 'A', 'C', 'B', 'B', 'A', 'C', 'B']))

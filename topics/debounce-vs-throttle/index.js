@@ -33,6 +33,6 @@
         eventType = 'touchmove'
     }
     zone.addEventListener(eventType, callback.bind(null, 'normal'));
-    zone.addEventListener(eventType, debounce(callback.bind(this, 'debounce'), 200));
-    zone.addEventListener(eventType, throttle(callback.bind(this, 'throttle'), 200));
+    zone.addEventListener(eventType, debounce(callback, 200).bind(this, 'debounce'));
+    zone.addEventListener(eventType, throttle(callback, 200).bind(this, 'throttle'));
 })();

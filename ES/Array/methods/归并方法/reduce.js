@@ -1,7 +1,8 @@
 /*
 * reduce(callback(pre, cur, currentIndex, array), initialValue)
 *
-* 对数组进行归并；不改变原数组
+* 对数组进行归并；
+* 不改变原数组
 **/
 
 let arr = [
