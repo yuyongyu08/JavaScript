@@ -7,7 +7,8 @@
 </head>
 
 <body>
-
+    <h3>event.target指向【触发】事件的DOM节点</h3>
+    <h3>event.currentTarget指向【绑定】事件的DOM节点</h3>
     <fieldset id="outer">
         this is outer
 
@@ -17,30 +18,22 @@
     </fieldset>
 
     <script>
-        document.getElementById('inner').addEventListener('click', function (event) {
-            // event.stopPropagation(, event.target === event.currentTarget); //阻止冒泡
-            console.log('inner', event.type, event.target === event.currentTarget);
-        });
+        document.getElementById('inner').addEventListener('click', callback);
 
-        document.getElementById('outer').addEventListener('click', function (event) {
-            console.log('outer', event.type, event.target === event.currentTarget);
-        });
+        document.getElementById('outer').addEventListener('click', callback);
 
-        document.body.addEventListener('click', function (event) {
-            console.log('body', event.type, event.target === event.currentTarget);
-        });
+        document.body.addEventListener('click', callback);
 
-        document.documentElement.addEventListener('click', function (event) {
-            console.log('html', event.type, event.target === event.currentTarget);
-        });
+        document.documentElement.addEventListener('click', callback);
 
-        document.addEventListener('click', function (event) {
-            console.log('document', event.type, event.target === event.currentTarget);
-        });
+        document.addEventListener('click', callback);
 
-        window.addEventListener('click', function (event) {
-            console.log('window', event.type, event.target === event.currentTarget);
-        });
+        window.addEventListener('click', callback);
+
+        function callback(event){
+            const tag = event.currentTarget.tagName;
+            console.log(tag ? tag.toLowerCase() : 'window', event.type, event.target === event.currentTarget);
+        }
     </script>
 </body>
 
