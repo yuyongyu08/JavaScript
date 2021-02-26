@@ -23,6 +23,19 @@ var curry = fn =>
       ? fn(...args)
       : (arg) => judge(...args, arg)
 
+// function curry(fn) {
+//   let calledCount = 1;
+//   return function (...args) {
+//     calledCount++
+//     if (calledCount % 2 == 0) {
+
+//     } else {
+
+//     }
+//   }
+// }
+
+
 let add = curry((a, b) => a + b)
 
 console.log('执行一次：', add(1))
