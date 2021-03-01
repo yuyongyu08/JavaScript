@@ -2,12 +2,24 @@
  * 输入：'RGB(0, 10, 255)'
  * 输出：'#000AFF'
  * 提示：十进制转16进制用toString(16)
- * */ 
+ * */
 
 function formatColor(color) {
+   let colors = color.match(/\d+/g);
 
+   function toHex(num) {
+      const str = Number(num).toString(16).toUpperCase();
+      return `${num < 15 ? '0' : ''}${str}`
+   }
 
+   colors = colors.map(color => toHex(color))
+
+   return `#${colors.join('')}`
 }
+
+console.log(formatColor('RGB(0, 10, 255)'));
+
+
 
 
 
@@ -17,7 +29,7 @@ Array.prototype.flat = function (depth = 1) {
    } else {
       return this
    }
-} 
+}
 // 实现一个 flat 方法，可以根据传入的层级展开对应深度的数组嵌套：
 var arr1 = [1, 2, [3, 4], [5, 6]];
 console.log(arr1.flat());// [1, 2, 3, 4, 5, 6]    
