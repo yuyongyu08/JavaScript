@@ -21,7 +21,7 @@ Array.prototype.myFlat = function myFlat(deep = 1){
             return a.concat(Array.isArray(b) ? b.myFlat(deep -1) : b)
         }, [])
     }else{
-        return this.slice()
+        return this
     }
 }
 

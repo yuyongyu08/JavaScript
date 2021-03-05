@@ -1,8 +1,8 @@
 class Node {
     constructor(key, left, right) {
-        this.left = left
-        this.key = key
-        this.right = right
+        this.key = key //先序
+        this.left = left //中序
+        this.right = right //后序
     }
 }
 
@@ -33,7 +33,7 @@ class BinarySearchTree {
     preOrderTerverse(cb) {
         function preOrderTerverseNode(node, callback) {
             if (node) {
-                cb(node)
+                callback(node)
                 preOrderTerverseNode(node.left, cb)
                 preOrderTerverseNode(node.right, cb)
             }
@@ -47,7 +47,7 @@ class BinarySearchTree {
         function inOrderTerverseNode(node, callback) {
             if (node) {
                 inOrderTerverseNode(node.left, cb)
-                cb(node)
+                callback(node)
                 inOrderTerverseNode(node.right, cb)
             }
         }
@@ -61,7 +61,7 @@ class BinarySearchTree {
             if (node) {
                 postOrderTerverseNode(node.left, cb)
                 postOrderTerverseNode(node.right, cb)
-                cb(node)
+                callback(node)
             }
         }
 
