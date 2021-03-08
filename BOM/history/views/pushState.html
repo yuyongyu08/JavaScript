@@ -34,6 +34,10 @@
         替换浏览器历史堆栈的当前历史记录为设定的url，不会改动浏览器历史堆栈的当前指针和栈长度
     </fieldset>
 
+    <p style="color: red;">
+        需要注意的是调用history.pushState()或history.replaceState()不会触发popstate事件。只有在做出浏览器动作时，才会触发该事件，如用户点击浏览器的回退按钮（或者在Javascript代码中调用history.back()或者history.forward()方法）
+    </p>
+
     <script>
         printHistoryLength(history.length);
 
