@@ -4,12 +4,12 @@
 // 数组：[2,8,11,19,55]；目标值：15；返回：3
 
 function findeIndex(arr, target) {
-    if (arr.includes(arr)) {
+    if (arr.includes(target)) {
         return arr.findIndex(item => item == target);
     } else {
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] < target && target < arr[i + 1]) {
-                arr.splice(i, 0, target)
+                arr.splice(i, 0, target);
                 return i + 1
             }
         }
@@ -26,7 +26,18 @@ console.log(findeIndex([2, 8, 11, 19, 55], 15))
 
 
 function reSort(arr, target) {
-    return [...arr.filter(item => item != target), ...arr.filter(item => item == target)]
+    // return [...arr.filter(item => item != target), ...arr.filter(item => item == target)]
+
+    let temp = [];
+    for (let index = 0; index < arr.length; index++) {
+        item = arr[index];
+        if(item === target){
+            temp.push(item);
+            arr.splice(index, 1);
+        }        
+    }
+
+    return [...arr, ...temp]
 }
 
-console.log(reSort([1,2,0,5,0,6,8,9,0,5,2,0,4]))
+console.log(reSort([1,2,0,5,0,6,8,9,0,5,2,0,4], 0))
