@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>样式隔离用shadowdom</h1>
+    <div>
+        <p>hello shadowDOM</p>
+        <div id="shadow"></div>
+    </div>
+
+    <script>
+        let shadowDOM = shadow.attachShadow({mode: 'closed'});
+        let pElement = document.createElement('p');
+        pElement.innerHTML = 'showdow node';
+        let styleElement = document.createElement('style');
+        styleElement.textContent = `
+            p{color: red}
+        `
+
+        shadowDOM.append(pElement);
+        document.body.append(styleElement);
+
+    </script>
+</body>
+</html>
