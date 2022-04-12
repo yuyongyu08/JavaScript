@@ -1,17 +1,17 @@
 /**
- * 将多维数组拍平（多维数组转成一维数组）
- * 参数：递归深度
- * 返回：拍扁新数组
- * 不改变数组
+ * 按照指定深度递归拍平数组
+ * @param depth 递归深度
+ * 不改变原数组
  */
 
 let arr = [1, [2, 3], [4, [5, [6, 7]]]];
 
 //默认只递归1层
-// console.log(arr.flat()); 
+console.log(arr.flat()); 
+console.log(arr);
 
 //无限递归
-// console.log(arr.flat(Infinity)); 
+console.log(arr.flat(Infinity)); 
 
 
 
