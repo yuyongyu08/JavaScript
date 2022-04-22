@@ -15,6 +15,7 @@ console.log(arr.flat(Infinity));
 
 
 
+// 使用reduce对数组进行归并
 Array.prototype.myFlat = function myFlat(deep = 1){
     if(deep > 0){
         return this.reduce((a, b) => {

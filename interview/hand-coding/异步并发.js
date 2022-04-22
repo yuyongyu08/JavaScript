@@ -11,3 +11,5 @@ function run(arr, cb) {
 
 const callback = res => console.table(res)
 run(asyncTasks, callback) // 3秒后输出 [1,2,3]
+
+console.log(Promise.all(asyncTasks));
