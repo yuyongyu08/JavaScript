@@ -16,10 +16,8 @@ let obj = {
 }
 
 console.log(arr.map(item => item.W * item.H));
-console.log(arr.map(function (item, index, array) {
-  return this.getArea(item.W, item.H)
-}, obj));
-console.log(arr);
+let newArr = arr.map(item => this.getArea(item.W, item.H), obj); //第二个参数是this
+console.log(newArr);
 
 Array.prototype.myMap = function (callback, context) {
   let temp = []
