@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>首页</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <ul>
-        <li>
-            <a href="/normal" target="_blank">normal</a>
-        </li>
-        <li>
-            <a href="/async" target="_blank">async</a>
-        </li>
-        <li>
-            <a href="/defer" target="_blank">defer</a>
-        </li>
-        <li>
-            <a href="/async-and-defer" target="_blank">async && defer</a>
-        </li>
+      <li>
+        <a href="/normal" target="_blank">normal</a>
+      </li>
+      <li>
+        <a href="/async" target="_blank">async</a>
+      </li>
+      <li>
+        <a href="/defer" target="_blank">defer</a>
+      </li>
+      <li>
+        <a href="/async-and-defer" target="_blank">async && defer</a>
+      </li>
     </ul>
-</body>
-
+    <script>
+      document.addEventListener("readystatechange", () => {
+        switch (true) {
+          case document.readyState === "loading":
+            console.log("文档加载中");
+            break;
+          case document.readyState === "interactive":
+            console.log("文档已被解析完成，与 DOMContentLoaded 几乎同时发生，但是在 DOMContentLoaded 之前发生");
+            break;
+          case document.readyState === "complete":
+            console.log("文档加载中，文档和资源均已加载完成，与 window.onload 几乎同时发生，但是在 window.onload 之前发生");
+            break;
+          default:
+            break;
+        }
+      });
+    </script>
+  </body>
 </html>

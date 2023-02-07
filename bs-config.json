@@ -1,0 +1,5 @@
+{
+  "port": 8000,
+  "files": ["./BOM/**/*.{html,css,js}", "./DOM/**/*.{html,css,js}", "./ES/**/*.{html,css,js}", "./topics/**/*.{html,css,js}"],
+  "server": { "baseDir": "./" }
+}

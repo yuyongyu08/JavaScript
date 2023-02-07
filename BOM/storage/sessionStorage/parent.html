@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>父页面</h1>
+  <a href="./child.html" target="_blank">子页面(<a>标签方式)</a>
+  <span onclick="window.open('./child.html')">子页面（window.open方式）</span>
+  <button onclick="addSessionStorage()">新增sessionStorage</button>
+
+  <script>
+    window.sessionStorage.setItem("parent_1","123");
+
+    function addSessionStorage(){
+      window.sessionStorage.setItem("parent_2","456");
+    }
+  </script>
+</body>
+</html>
