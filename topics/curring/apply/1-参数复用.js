@@ -1,5 +1,4 @@
 //参数复用
-
 function check(reg, text) {
     return reg.test(text)
 }
@@ -14,10 +13,9 @@ function curryingCheck(reg) {
     }
 }
 
-let hasNumber = curryingCheck(/\d+/g)
-let hasLetter = curryingCheck(/[a-z]+/g)
+let check = curryingCheck(/\d+/g)
+let checkLetter = curryingCheck(/[a-z]+/g)
 
-console.log(hasNumber('test'));
-console.log(hasLetter('test'));
-console.log(hasLetter('test123'));
+console.log(checkNumber('test'));
+console.log(checkLetter('test123'));
 
