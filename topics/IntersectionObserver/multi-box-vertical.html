@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>test IntersectionObserver</title>
     <style>
-        .boxs{
-            position: absolute;
-            top: 120%;
-        }
-        .box{
-            width: 100px;
-            height: 100px;
-            background-color: green;
-            margin-bottom: 20px;
-        }
+      .boxs {
+        position: absolute;
+        top: 120%;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        margin-bottom: 20px;
+      }
     </style>
-</head>
-<body>
-<div class="boxs">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-</div>
+  </head>
+  <body>
+    <div class="boxs">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
 
-<script>
-    let boxs = document.querySelectorAll('.box');
+    <script>
+      let boxs = document.querySelectorAll(".box");
+      let tips = document.getElementById("tips");
 
-    let observer = new IntersectionObserver(entries => {
+      let observer = new IntersectionObserver((entries) => {
         console.log(entries);
         console.log(`有${entries.length}个元素被观察`);
 
         let intersectedArr = [];
-        entries.forEach(item => {
-            item.isIntersecting ? intersectedArr.push(item) : ''
+        entries.forEach((item) => {
+          item.isIntersecting ? intersectedArr.push(item) : "";
         });
+        tips.innerHTML = `有${intersectedArr.length}个发生交叉`;
         console.log(`有${intersectedArr.length}个发生交叉`);
-    });
+      });
 
-    boxs.forEach(box => observer.observe(box))
-
-</script>
-</body>
+      boxs.forEach((box) => observer.observe(box));
+    </script>
+  </body>
 </html>

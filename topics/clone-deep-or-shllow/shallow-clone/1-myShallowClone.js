@@ -1,21 +1,21 @@
 function shallowClone(source) {
     if(!source) return;
 
-    let target = null;
-    if(Object.getPrototypeOf(source) === Object.prototype){
-        target = {};
+    let copy = null;
+    if(Object.prototype.toString.call(source) === '[object Object]'){
+        copy = {};
         Object.keys(source).forEach((key)=>{
-            target[key] = source[key]
+            copy[key] = source[key]
         })
     }else{
-        target = source
+        copy = source
     }
 
-    return target
+    return copy
 }
 
 let developer = require('../data');
-console.log('target:', developer);
+console.log('copy:', developer);
 
 let newDeveloper = shallowClone(developer);
 console.log('newDeveloper:', newDeveloper);
