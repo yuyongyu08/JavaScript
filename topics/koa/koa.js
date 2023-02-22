@@ -1,42 +1,54 @@
-class Koa{
-    middlewares = [];
-    context = {
-        request: null,
-        response: null
-    }
+class Koa {
+  constructor() {
+    this.middlewareList = [];
+    this.context = {
+      request: null,
+      response: null,
+    };
+  }
 
-    use(middleware){
-        this.middlewares.push(middleware)
-    }
+  use(middleware) {
+    this.middlewareList.push(middleware);
+  }
 
-    compose(){
-        console.log('koa init');
-        const middlewareFn = this.middlewares.reduceRight((pre, next, index, arr) => {
-            return next.bind(this, this.context, pre)
-        }, () => {
-            console.log('koa start');
-        });
+  compose(middlewareList) {
+    return function (ctx) {
+      function dispatch(index) {
+        const middleware = middlewareList[index];
+        if (!middleware) return;
+        return middleware(ctx, dispatch.bind(null, index + 1));
+      }
 
-        middlewareFn()
-    }
+      return dispatch(0);
+    };
+  }
 }
 
 const app = new Koa();
 
 app.use((ctx, next) => {
-    console.log('mid1 start');
-    next();
-    console.log('mid1 end');
-})
+  console.log("A start");
+  next();
+  console.log("A end");
+});
 
 app.use((ctx, next) => {
-    console.log('mid2 start');
-    next();
-    console.log('mid2 end');
-})
+  console.log("B start");
+  next();
+  console.log("B end");
+});
 
-app.use((ctx) => {
-    console.log('final');
-})
+app.use((ctx, next) => {
+  console.log("C start");
+  next();
+  console.log("C end");
+});
 
-app.compose()
+app.use((ctx, next) => {
+  console.log("D start");
+  next();
+  console.log("D end");
+});
+
+const run = app.compose(app.middlewareList);
+run();
