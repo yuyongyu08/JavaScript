@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch</title>
+  </head>
+  <body>
+    <h2>fetch取消请求用AbortController.abort()</h2>
+    <script>
+      const controller = new AbortController();
+
+      fetch("http://localhost:8000/topics/cancle-request/fetch.html", {
+        signal: controller.signal,
+      })
+        .then((response) => {
+          console.log("下载完成", response.json());
+        })
+        .catch((err) => {
+          console.error(`下载错误：${err.message}`);
+        });
+
+      setTimeout(() => {
+        controller.abort();
+      }, 0);
+    </script>
+  </body>
+</html>
